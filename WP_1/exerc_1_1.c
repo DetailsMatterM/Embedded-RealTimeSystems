@@ -1,4 +1,5 @@
 #include <stdio.h>
+//gcc hello.c -o hello
 
 int calculate(int num)
 {
