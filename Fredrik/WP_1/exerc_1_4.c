@@ -1,7 +1,7 @@
-#define MAX 4
 #include <stdio.h>
 
 int amountOfGuesses = 1;
+char answer;
 
 int randomNum()
 {
@@ -19,8 +19,8 @@ int randomNum()
 
 int guessing()
 {
-    int flag = 1;
-    while (flag == 1)
+    int MAX_NUMBER = 3;
+    while (MAX_NUMBER > amountOfGuesses)
     {
 
         int guessedNumber;
@@ -33,7 +33,6 @@ int guessing()
             printf("*******************************************************\n");
             printf("You have guessed %d times and your guess %d is correct \n", amountOfGuesses, guessedNumber);
             printf("*******************************************************\n");
-            flag = 0;
             amountOfGuesses++;
         }
         else if (guessedNumber > correctNum)
@@ -51,6 +50,32 @@ int guessing()
 
 int main()
 {
-
+    int flag = 1;
     guessing();
+
+    while (flag == 1)
+    {
+        if (amountOfGuesses > 1)
+        {
+            printf("Guessed to many times ! \n type  y to try again or n to exit ");
+        }
+        scanf("%s", &answer);
+
+        switch (answer)
+        {
+        case 'y':
+            amountOfGuesses = 0;
+            guessing();
+            break;
+        case 'n':
+            flag = 0;
+            printf("bye bye ! ");
+            amountOfGuesses = 0;
+        default:
+            printf("Incorrect key entered ");
+            amountOfGuesses = 0;
+
+            break;
+        }
+    }
 }
