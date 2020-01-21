@@ -1,3 +1,16 @@
+/*====================================
+File name: exerc_1_1.c (or cpp)
+Date: 2020-01-21
+Group nr 7
+Members that contribute to the solutions
+Moriz Denke 
+Mikael Köse Jansson 
+Fredrik Ullman
+Member not present at demonstration time:
+Yyyyyy yyyy
+Demonstration code: [<Ass code 1-4> <abc>] Important , No code no exercise points !
+======================================*/
+
 #include <stdio.h>
 //gcc hello.c -o hello
 
