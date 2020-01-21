@@ -1,6 +1,8 @@
 #define MAX 4
 #include <stdio.h>
 
+int amountOfGuesses = 1;
+
 int randomNum()
 {
     int correctNumber;
@@ -20,24 +22,29 @@ int guessing()
     int flag = 1;
     while (flag == 1)
     {
+
         int guessedNumber;
         int correctNum = randomNum();
         printf("Guess a number\n");
-        //  fgets(guessedNumber, MAX, stdin);
         scanf("%d", &guessedNumber);
-        printf("The guessed number is %d\n", guessedNumber);
-        printf("The correct number is %d\n", correctNum);
 
         if (guessedNumber == correctNum)
         {
-            printf("**************************\n");
-            printf("Congratulations, you won ! \n");
-            printf("**************************\n");
+            printf("*******************************************************\n");
+            printf("You have guessed %d times and your guess %d is correct \n", amountOfGuesses, guessedNumber);
+            printf("*******************************************************\n");
             flag = 0;
+            amountOfGuesses++;
         }
-        else
+        else if (guessedNumber > correctNum)
         {
-            printf("Incorrect, try again ! ");
+            printf("Too high , try again ! \n");
+            amountOfGuesses++;
+        }
+        else if (guessedNumber < correctNum)
+        {
+            printf("Too low! try again \n");
+            amountOfGuesses++;
         }
     }
 }
