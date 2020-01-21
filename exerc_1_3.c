@@ -28,6 +28,10 @@ int main()
         {
             word[i] = 'n';
         }
+        else if (word[i] == 'n')
+        {
+            word[i] = 'a';
+        }
     }
 
     printf("Encrypted Word is : %s\n", word);
