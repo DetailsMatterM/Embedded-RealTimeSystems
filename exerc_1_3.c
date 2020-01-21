@@ -17,7 +17,11 @@ char word[MAX];
 
 int main()
 {
+    encryption();
+}
 
+int encryption()
+{
     printf("Enter a word to encrypt it : ");
     while (1)
     {
@@ -25,7 +29,7 @@ int main()
         fgets(word, MAX, stdin);
         printf("word is : %s\n", word);
 
-        for (int i = 0; i < 10; i++)
+        for (int i = 0; i < MAX; i++)
         {
             if (word[i] == 'a')
             {
