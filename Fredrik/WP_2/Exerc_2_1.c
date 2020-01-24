@@ -14,7 +14,7 @@ Demonstration code: [<Ass code 1-4> <abc>] Important , No code no exercise point
 #include <string.h>
 #define MAX 200
 char word[MAX];
-void copyString()
+void copyStringManually()
 {
     char savedWord[MAX];
     savedWord[MAX];
@@ -26,7 +26,7 @@ void copyString()
     printf("printed from copyString : %s", savedWord);
 }
 
-void readFile()
+int readFile()
 {
     // reading input from a text file
     FILE *fp;
@@ -47,11 +47,8 @@ void readFile()
     }
 }
 
-int main()
+int copyStringAutomatically()
 {
-
-    readFile();
-
     char saved[MAX];
     printf("Type something : \n");
     fgets(word, MAX, stdin);
@@ -59,6 +56,16 @@ int main()
     // a ) copy the string to another string
     strcpy(saved, word);
     printf("printed from strcpy() : %s", saved);
+}
+
+int main()
+{
+    //reads input from text file
+    readFile();
+
+    // a ) copy from library function
+    copyStringAutomatically();
+
     // b  ) copy the string manually
-    copyString();
+    copyStringManually();
 }
