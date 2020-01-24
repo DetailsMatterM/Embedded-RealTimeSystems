@@ -55,8 +55,14 @@ int randomizeNumbers()
 
         // This prints all saved integers with the temporarily saved integer and place in array
         //printf("%d # :  %d and temp %d\n", i, array[i], temp);
+        int *ip;
+        ip = &array[i];
+        double *dp;
+        dp = &array[i];
+        printf("Integer value : %d  Double value : %d \n ", *ip, *dp);
     }
     int size = sizeof(array);
+
     printf("The value  of the label array (address) is %p \n", pointer);
     printf("First integer in the array is (%d): \n", array[0]);
     printf("The size of an integer is (number of bytes) is %lu \n ", sizeof(int));
