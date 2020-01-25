@@ -55,11 +55,12 @@ int randomizeNumbers()
 
         // This prints all saved integers with the temporarily saved integer and place in array
         //printf("%d # :  %d and temp %d\n", i, array[i], temp);
-        int *ip;
-        ip = &array[i];
-        double *dp;
-        dp = &array[i];
-        printf("Integer value : %d  Double value : %d \n ", *ip, *dp);
+        int *intptr;
+        intptr = &array[i];
+        int *doublepointer;
+        doublepointer = &array[i];
+
+        printf("Integer value : %d\n Double value  : %f\n ****\n ", *intptr, (double)*doublepointer);
     }
     int size = sizeof(array);
 
@@ -70,6 +71,9 @@ int randomizeNumbers()
 }
 int main()
 {
+    // double test[3] = {17, 41, 12};
+    // double *testptr = &test;
+    // printf("%f", *testptr);
     randomizeNumbers();
     // checkForZeroes();
 }
