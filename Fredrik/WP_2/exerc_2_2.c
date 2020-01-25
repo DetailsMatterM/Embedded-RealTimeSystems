@@ -39,7 +39,7 @@ int randomizeNumbers()
     srand(time(0));
     // following declaration would point to the 0th address in the array. this points to the whole array
     // int *pointer = array;
-    int(*pointer)[MAX] = array;
+    int(*arrayPointer)[MAX] = array;
     for (i = 0; i < MAX; i++)
     {
         int temp;
@@ -57,6 +57,7 @@ int randomizeNumbers()
         //printf("%d # :  %d and temp %d\n", i, array[i], temp);
         int *intptr;
         intptr = &array[i];
+
         int *doublepointer;
         doublepointer = &array[i];
 
@@ -64,16 +65,14 @@ int randomizeNumbers()
     }
     int size = sizeof(array);
 
-    printf("The value  of the label array (address) is %p \n", pointer);
-    printf("First integer in the array is (%d): \n", array[0]);
-    printf("The size of an integer is (number of bytes) is %lu \n ", sizeof(int));
+    printf("The value  of the label array (address) is: %p \n", arrayPointer);
+    printf(" First integer in the array is (%d): \n", array[0]);
+    printf(" The size of an integer is (number of bytes) is %lu \n ", sizeof(int));
     printf("The size of the whole array is : %lu \n", array);
 }
 int main()
 {
-    // double test[3] = {17, 41, 12};
-    // double *testptr = &test;
-    // printf("%f", *testptr);
+
     randomizeNumbers();
     // checkForZeroes();
 }
