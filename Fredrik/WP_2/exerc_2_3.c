@@ -15,8 +15,6 @@ Demonstration code: [<Ass code 1-4> <abc>] Important , No code no exercise point
 #include <string.h>
 #define MAX 50
 
-
-
 int main(int argc, char *argv[])
 {
 
@@ -27,16 +25,37 @@ int main(int argc, char *argv[])
     }
     printf(" First word  : %s\n Second word : %s\n", argv[1], argv[2]);
 
-    int compare = strcmp(argv[1], argv[2]);
+    // compare using the strcmp function
+    // int compare = strcmp(argv[1], argv[2]);
+    // if (compare == 0)
+    // {
+    //     printf("%s and %s\n ", argv[1], argv[2]);
+    //     printf(" Words are identical ! ");
+    // }
+    //compare without use of strcmp function
+    printf("%s %s\n", argv[1], argv[2]);
 
-    if (compare == 0)
+    int allCorrect = 1;
+
+    for (int i = 0; i < strlen(argv[1]) || i < strlen(argv[2]); i++)
     {
-        printf("%s and %s\n ", argv[1], argv[2]);
-        printf(" Words are identical ! ");
+        if (argv[1][i] == argv[2][i])
+        {
+            printf("Letter %d identical \n", i);
+        }
+        else
+        {
+            printf(" Letter %d Words are not identical \n", i);
+            allCorrect = 0;
+        }
     }
-    else
+    if (allCorrect == 1)
     {
-        printf("Words are not identical");
+        printf("Awesome words are identical\ n");
+    }
+    else if (allCorrect == 0)
+    {
+        printf("Sorry, not all letters were identical \n");
     }
 
     return 0;
