@@ -13,26 +13,51 @@ Demonstration code: [<Ass code 1-4> <abc>] Important , No code no exercise point
 #define MAX 50
 #include <stdio.h>
 #include <string.h>
+#include <stdlib.h>
 
-char palindromeWord[MAX];
-char compareLetter[MAX];
+char palinWord[MAX];
 
+char compare[MAX];
+int lastInt;
+int last;
 int main()
 {
-    printf("Enter a word to check if its a palindrome : ");
-    fgets(palindromeWord, MAX, stdin);
 
-    for (int i = 0; i < strlen(palindromeWord) - 1; i++)
+    printf("Enter a word to check if its a palindrome : ");
+    fgets(palinWord, MAX, stdin);
+    lastInt = strlen(palinWord) - 2;
+    last = strlen(palinWord) - 1;
+    printf("%d", last);
+    if (last % 2 == 0)
     {
-        compareLetter[i] = palindromeWord[i];
-        int lastChar = strlen(compareLetter) - 1;
-        if (palindromeWord[i] == compareLetter[lastChar])
+        printf(" even word! \n");
+        swapLetters();
+    }
+    else
+    {
+        printf("Not an even word! \n");
+
+        swapLetters();
+    }
+}
+
+// int m = atoi(palinWord); //convert string to integer
+int swapLetters()
+{
+
+    lastInt = strlen(palinWord) - 2;
+    last = strlen(palinWord) - 1;
+    for (int i = 0; i < lastInt; i++)
+    {
+
+        if (palinWord[i] == palinWord[lastInt])
         {
-            printf("%d, %c is equal \n", i, palindromeWord[i]);
-                }
+            printf("%d : %c | %c : %d \n", i, palinWord[i], palinWord[lastInt], lastInt);
+            lastInt--;
+        }
         else
         {
-            printf("Characters are not the same \n");
+            printf("Nope ");
         }
     }
 }
