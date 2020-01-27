@@ -8,16 +8,20 @@ int output(int list [], int max);
 int main() {
     int que [MAX];
     initQue(que, MAX);
+
     int a = input(que, 2, MAX); //TEST
     printf("\n%d", a); //TEST
-    a = input(que, 2, MAX); //TEST
-    printf("\n%d", a); //TEST
-    
-    int b = output(que, MAX);
-     for(int z = 0; z < MAX; z++) { //TEST
-        printf("\n Frequency: %d", que[z]);
+    for(int z = 0; z < MAX; z++) { //TEST
+        printf("\n Element in Queue: %d", que[z]);
     }
-    printf("\n%d", b); //TEST
+
+    int b = output(que, MAX);
+    printf("\n Return value: %d", b); //TEST
+
+    for(int x = 0; x < MAX; x++) { //TEST
+        printf("\n Element in Queue: %d", que[x]);
+    }
+    
     return 0;
 }
 
