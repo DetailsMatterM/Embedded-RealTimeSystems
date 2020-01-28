@@ -5,7 +5,7 @@
 int main() {
     srand(time(NULL));
     int random [MAX];
-    int * pointer = random;
+    int * pointer = &random;
     int i;
     for(i = 0; i < MAX; i++) {
         random[i] = (rand() % (99 - 1 + 1)) + 1;

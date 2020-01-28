@@ -13,8 +13,8 @@ int main() {
     int table [MAX], n;
     int frequency[MAXNUMBER];
 
-    int *tab = table;
-    int *freq = frequency;
+    int *tab = &table;
+    int *freq = &frequency;
 
     create_random(tab);
     count_frequency(tab, freq);
