@@ -21,14 +21,10 @@ int lastInt;
 int last;
 int truePalindrome = 1;
 
-int swapLetters();
-int isPalindrome();
-
 int main()
 {
 
     printf("Enter a word to check if its a palindrome : ");
-
     fgets(palinWord, MAX, stdin);
 
     swapLetters();
@@ -41,14 +37,16 @@ int swapLetters()
     lastInt = strlen(palinWord) - 2;
 
     last = strlen(palinWord) - 1;
+    printf(" total length : %d \n ", last);
     if (last % 2 == 0)
     {
-
+        printf(" even word! \n");
         for (int i = 0; i < lastInt; i++)
         {
 
             if (palinWord[i] == palinWord[lastInt])
             {
+                printf("%d : %c | %c : %d \n", i, palinWord[i], palinWord[lastInt], lastInt);
                 lastInt--;
             }
             else
@@ -58,15 +56,20 @@ int swapLetters()
         }
     }
     else
+    // this function is not yet working, we need a way to find the middle char and keep it if the length is uneven
     {
         int middleCharacter = (strlen(palinWord) / 2);
         int middleCharacterIndexPosition = middleCharacter - 1;
+        printf("MiddleCharacter : %d \n", middleCharacter);
+        printf("MiddleCharacterIndexPosition : %d \n", middleCharacterIndexPosition);
 
+        printf("Not an even word! \n");
         for (int i = 0; i < lastInt; i++)
         {
 
             if (palinWord[i] == palinWord[lastInt])
             {
+                printf("%d : %c | %c : %d  middlemost letter: %c\n", i, palinWord[i], palinWord[lastInt], lastInt, palinWord[middleCharacterIndexPosition]);
                 lastInt--;
             }
             else
