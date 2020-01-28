@@ -10,9 +10,9 @@ int main(char textToCopy [20]) {
     char textSource [MAX];
     char textCopy [MAX];
     char textCopyCustom [MAX];
-    char * dest = &textCopy;
-    char * src = &textSource;
-    char * dest2 = &textCopyCustom;
+    char *dest = textCopy;
+    char *src = textSource;
+    char *dest2 = textCopyCustom;
     fgets(textSource, MAX, stdin);
     strcpy(dest, src);
 
@@ -27,7 +27,6 @@ int main(char textToCopy [20]) {
 
 }
 
-//improve (since int byte is bigger than char byte)
 void copyString(char * input, char * output){
     while(*input != '\0'){
         *output++ = *input++;
