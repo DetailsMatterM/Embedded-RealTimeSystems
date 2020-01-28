@@ -5,8 +5,7 @@
 
 void copyString(char * input, char * output);
 
-int main(char textToCopy [20]) {
-    fflush(stdin);
+int main(char textInput [20]) {
     char textSource [MAX];
     char textCopy [MAX];
     char textCopyCustom [MAX];
@@ -20,11 +19,9 @@ int main(char textToCopy [20]) {
     printf("\n%s", textCopy);
     puts("\n==========================================");
 
-
     puts("\nThis is the copied string using copyString:");
     copyString(src, dest2);
     printf("\n%s", textCopyCustom);
-
 }
 
 void copyString(char * input, char * output){
