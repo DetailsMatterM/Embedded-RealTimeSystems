@@ -9,8 +9,11 @@ int main() {
     char number [LENGTH];
     char *person = number;
 
-    fgets(number, LENGTH, stdin);
-    readPersnr(person);
+    while(number[0] != 'q'){
+        printf("\n%s", "Please enter a 10-digit person number\n");
+        fgets(number, LENGTH, stdin);
+        readPersnr(person);
+    }
     return 0;
 }
 
@@ -80,7 +83,6 @@ int convert(char *person, int in, int span) {
         raw[i] = *person;
         person++;
     }
-
     sscanf(raw, "%d", &result);
     return result;
 }
