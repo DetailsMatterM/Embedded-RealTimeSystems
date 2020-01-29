@@ -46,25 +46,34 @@ void readPersnr(char *person) {
 }
 
 int controlDigit(const char *persnr) {
-    int part, part2, a, b, checksum;
-    for (int i = 0; i < 10; i++) {
-        int part = convert(persnr, i, 1);
+    int part, part2, a, b;
+    int checksum = 0;
+    for (int i = 0; i < 9; i++) {
+        part = convert(persnr, i, 1);
         if (i % 2 == 0) {
             part = part * 2;
             if (part >= 10) {
-                a = part % 10;
-                b = part/10;
+                a = part/10;
+                b = part % 10;
                 part = a + b;
             }
-            
         }
+        checksum += part;
     }
-
-//    year = convert(persnr, 0);
-//    month = convert(persnr, 2);
-//    day = convert(persnr,4);
-//    number = convert(persnr,9);
-
+    a = checksum % 10;
+    b = 10 - a;
+    if (b != 10){
+        checksum = b;
+    } else {
+        checksum = 0;
+    }
+    printf("\n%d", checksum);
+    persnr++;
+    if (*persnr == checksum) {
+        return 0;
+    } else {
+        return 1;
+    }
 }
 
 int convert(char *person, int in, int span) {
