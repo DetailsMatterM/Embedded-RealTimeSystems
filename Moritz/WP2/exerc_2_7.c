@@ -3,6 +3,7 @@
 #define LENGTH 11
 void readPersnr(char *person);
 int convert(char *person, int i);
+int controlDigit(const char *persnr);
 
 int main() {
     char number [LENGTH];
@@ -12,6 +13,7 @@ int main() {
     readPersnr(person);
     return 0;
 }
+
 
 void readPersnr(char *person) {
     int year, month, day, number;
@@ -24,6 +26,17 @@ void readPersnr(char *person) {
     printf("\n%d", month);
     printf("\n%d", day);
     printf("\n%d", number);
+    const char *persnr = person;
+    int checker = controlDigit(persnr);
+}
+
+int controlDigit(const char *persnr) {
+    int year, month, day, number;
+    year = convert(persnr, 0);
+    month = convert(persnr, 2);
+    day = convert(persnr,4);
+    number = convert(persnr,9);
+    
 }
 
 int convert(char *person, int in) {
@@ -41,5 +54,4 @@ int convert(char *person, int in) {
 
     sscanf(raw, "%d", &result);
     return result;
-
 }
