@@ -36,6 +36,11 @@ void readPersnr(char *person) {
         printf("\n%s", "Day invalid");
         return;
     }
+
+    printf("%d", year);
+    printf("\n%d", month);
+    printf("\n%d", day);
+    printf("\n%d", number);
     const char *persnr = person;
     int checker = controlDigit(persnr);
     if (checker == number) {
@@ -83,4 +88,3 @@ int convert(char *person, int in, int span) {
 
     sscanf(raw, "%d", &result);
     return result;
-}
