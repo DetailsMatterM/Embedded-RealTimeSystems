@@ -2,22 +2,24 @@
 
 #define LENGTH 11
 void readPersnr(char *person);
-int convert(char *person, int i, int span);
+int convert(char *person, int in, int span);
 int controlDigit(const char *persnr);
-int flag = 0;
+
 
 int main() {
     char number [LENGTH];
     char *person = number;
 
-    while (flag != 1) {
-        printf("\n%s", "Please enter a 10-digit person number or q to end the program\n");
+    int flag = 0;
+    while (flag == 0) {
+        printf("\n%s", "Please enter a valid 10-digit person number or q to end the program\n");
         fgets(number, LENGTH, stdin);
         if(*person == 'q'){
             flag = 1;
+        } else {
+            readPersnr(person);
         }
-        getchar();
-        readPersnr(person);
+       fflush(stdin);
     }
 
     return 0;
@@ -26,10 +28,6 @@ int main() {
 
 void readPersnr(char *person) {
     int year, month, day, number;
-    if (*person == 'q') {
-        flag = 1;
-        return;
-    }
     year = convert(person, 0, 2);
     if (year <= 99){
         month = convert(person, 2, 2);
