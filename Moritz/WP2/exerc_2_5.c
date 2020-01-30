@@ -7,7 +7,7 @@
 
 void create_random(int *tab);
 void count_frequency(int *tab, int *freq);
-void draw_historgram(int *freq);
+void draw_histogram(int *freq);
 
 int main() {
     int table [MAX], n;
@@ -18,7 +18,7 @@ int main() {
 
     create_random(tab);
     count_frequency(tab, freq);
-    draw_historgram(freq);
+    draw_histogram(freq);
     return 0;
 }
 
@@ -48,7 +48,7 @@ void count_frequency(int *tab, int *freq) {
 }
 
 
-void draw_historgram(int *freq) {
+void draw_histogram(int *freq) {
     for(int i = 0; i <= MAXNUMBER; i++) {
         if(*freq != 0) {
             if(i < 10) {

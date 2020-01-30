@@ -4,22 +4,32 @@
 void readPersnr(char *person);
 int convert(char *person, int i, int span);
 int controlDigit(const char *persnr);
+int flag = 0;
 
 int main() {
     char number [LENGTH];
     char *person = number;
 
-    while(number[0] != 'q'){
-        printf("\n%s", "Please enter a 10-digit person number\n");
+    while (flag != 1) {
+        printf("\n%s", "Please enter a 10-digit person number or q to end the program\n");
         fgets(number, LENGTH, stdin);
+        if(*person == 'q'){
+            flag = 1;
+        }
+        getchar();
         readPersnr(person);
     }
+
     return 0;
 }
 
 
 void readPersnr(char *person) {
     int year, month, day, number;
+    if (*person == 'q') {
+        flag = 1;
+        return;
+    }
     year = convert(person, 0, 2);
     if (year <= 99){
         month = convert(person, 2, 2);
@@ -43,6 +53,8 @@ void readPersnr(char *person) {
     int checker = controlDigit(persnr);
     if (checker == number) {
         printf("\n%s", "The person number is valid");
+    } else {
+        printf("\n%s", "The person number is not valid");
     }
 }
 
