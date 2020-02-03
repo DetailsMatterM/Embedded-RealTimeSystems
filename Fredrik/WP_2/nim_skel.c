@@ -144,8 +144,7 @@ int main()
 void clear_stdin()
 {
     char temp;
-    while ((temp = getchar()) != '\n')
-        ;
+    while ((temp = getchar()) != '\n');
 }
 
 //edge case that needs to be implemented: if you dont enter an integer but a character
@@ -157,7 +156,7 @@ int human_choice(int pile)
     while (flag == 0)
     {
         scanf("%d", &num);
-        if (num <= 3 && num > 0)
+        if (num <= 3 && num > 0 && num <= pile)
         {
             flag = 1;
         }
