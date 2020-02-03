@@ -234,15 +234,12 @@ int play_again()
 
 int toggle(int player)
 {
-    int num;
     if (player == 0)
     {
-        num = 1;
-        player = num;
+        return 1;
     }
     else if (player == 1)
     {
-        num = 0;
-        player = num;
+        return 0;
     }
 }
