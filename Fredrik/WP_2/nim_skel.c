@@ -11,10 +11,7 @@
 #include <stdlib.h>
 #include <stdbool.h>
 #include <time.h>
-#include <ctype.h>
-#include <math.h>
 #define MAX_COINS 13
-#define MAX 3
 
 const int HUMAN = 0;
 const int COMPUTER = 1;
@@ -81,8 +78,8 @@ void clear_stdin();
 int main()
 {
     int pile,    /* This is how many coins we have */
-        player,  /* Who is playing? */
-        n_coins; /* Number of coins taken */
+            player,  /* Who is playing? */
+            n_coins; /* Number of coins taken */
 
     srand(time(0)); /* Setup random */
 
@@ -129,8 +126,13 @@ int main()
    */
 
     write_winner(player);
-    play_again();
-    printf("Avslutat\n");
+    int checker = play_again();
+    if (checker == 0) {
+        main();
+    } else {
+        printf("Avslutat\n");
+    }
+
 
     return 0;
 }
@@ -214,23 +216,20 @@ void write_winner(int player)
 }
 int play_again()
 {
-    bool turn;
-    printf("Do you want to play again ? ");
+    printf("Do you want to play again? Type 'y' if you want to play again! ");
     char option;
     scanf("%c", &option);
 
     if (option == 'y')
     {
-        turn = true;
         printf("Welcome to next round! ");
-        main();
+        return 0;
     }
-    else if (option == 'N' || 'n')
+    else
     {
-        turn = false;
         printf("Byebye \n");
+        return 1;
     }
-    return turn;
 }
 
 int toggle(int player)
