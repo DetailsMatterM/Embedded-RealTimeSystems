@@ -1,5 +1,5 @@
 #include <stdio.h>
-
+#define MAX 21
 enum DIRECTION{N,O,S,W};
 
 typedef struct {
@@ -17,15 +17,26 @@ int main() {
     ROBOT *ptr = &robot1;
     int x;
     int y;
+    char input [MAX];
     printf("Please define the roboters starting position\n");
     printf("Coordinate x (between 0 and 99)\n");
     scanf("%d", &robot1.xpos);
     printf("Coordinate y (between 0 and 99)\n");
     scanf("%d", &robot1.ypos);
     robot1.dir = N;
-    
-    printf("Please enter a string of m and t(maximal length 20), m standing for move and t for turn ");
-    
+    printf("\nX coordinate is %d and y coordinate is %d", robot1.xpos, robot1.ypos);
+    printf("\nPlease enter a string of m and t(maximal length 20), m standing for move and t for turn\n");
+    fflush(stdin);
+    fgets(input, MAX, stdin);
+    for (int i = 0; i < MAX; i++){
+        if(input[i] == 'm') {
+             move(ptr);
+        } else {
+            turn(ptr);
+        }
+    }
+    printf("\nX coordinate is %d and y coordinate is %d", robot1.xpos, robot1.ypos);
+   
     return 0;
 }
 
