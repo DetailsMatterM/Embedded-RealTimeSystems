@@ -11,7 +11,7 @@
 #include <stdlib.h>
 #include <stdbool.h>
 #include <time.h>
-
+#include <ctype.h>
 #include <math.h>
 #define MAX_COINS 13
 #define MAX 3
@@ -103,12 +103,12 @@ int main()
         {
 
             n_coins = human_choice(pile);
-            printf("- Human took %d\n", n_coins);
+            printf(" Human took %d ... ", n_coins);
         }
         else
         {
             n_coins = computer_choice(pile);
-            printf("- Computer took %d\n", n_coins);
+            printf(" Computer took %d ... ", n_coins);
         }
         pile -= n_coins;
 
@@ -139,33 +139,30 @@ int main()
 
 void clear_stdin()
 {
-    while (getchar() != '\n')
-    {
+    char temp;
+    while ((temp = getchar()) != '\n')
         ;
-    }
 }
 
 //edge case that needs to be implemented: if you dont enter an integer but a character
 int human_choice(int pile)
 {
     int num;
-    int flag = 1;
-    scanf("%d", &num);
-
-    while (flag == 1)
+    int flag = 0;
+    while (flag == 0)
     {
-        if (num >= 4 || num < 1)
+        scanf("%d", &num);
+        if (num <= 3 && num > 0)
         {
-
-            printf("You can only take 1, 2 or 3 coins from the stack. \n ");
-            scanf("%d", &num);
+            flag = 1;
         }
         else
         {
-            pile = num;
-            flag = 0;
+            printf("Please enter a valid digit\n");
         }
+        clear_stdin();
     }
+    return num;
 }
 
 int computer_choice(int pile)
