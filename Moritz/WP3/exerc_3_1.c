@@ -25,6 +25,7 @@ int main() {
     robot1.dir = N;
     
     printf("Please enter a string of m and t(maximal length 20), m standing for move and t for turn ");
+    
     return 0;
 }
 
@@ -33,10 +34,13 @@ void turn(ROBOT *ptr) {
 }
 void move(ROBOT *ptr) {
     //implement check for direction to decide on the right way to move
-    if(ptr -> dir == N) {
-        
-    }
-    if (ptr -> xpos != 99) {
+    if (ptr -> dir == N && ptr -> ypos != 99) {
+        ptr -> ypos++;
+    } else if (ptr -> dir == O && ptr -> xpos != 99) {
         ptr -> xpos++;
-    } 
+    } else if (ptr -> dir == S && ptr -> ypos != 0) {
+        ptr -> ypos--;
+    } else if(ptr -> dir == W && ptr -> xpos != 0) {
+        ptr -> xpos--;
+    }
 }
