@@ -125,7 +125,7 @@ int main()
    */
 
     write_winner(player);
-
+    play_again();
     printf("Avslutat\n");
 
     return 0;
@@ -196,17 +196,36 @@ void write_winner(int player)
         player = num;
         printf("WINNER IS HUMAN !\n ");
     }
-
-    /*
- * write_winner
- * Write winner as a string on stdout.
- * in: Values HUMAN or COMPUTER.
- * out:
- */
 }
 
+/*
+ * play_again
+ * Ask human if he/she wants to play
+ * another round. If 'n' or 'N' selected
+ * (single char) return false else true.
+ * Clears stdin.
+ * in: 
+ * out: true or false
+ */
 int play_again()
 {
+    bool turn;
+    printf("Do you want to play again ? ");
+    char option;
+    scanf("%c", &option);
+
+    if (option == 'y')
+    {
+        turn = true;
+        printf("Welcome to next round! ");
+        main();
+    }
+    else if (option == 'N' || 'n')
+    {
+        turn = false;
+        printf("Byebye \n");
+    }
+    return turn;
 }
 
 int toggle(int player)
