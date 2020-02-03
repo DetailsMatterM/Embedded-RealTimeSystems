@@ -175,13 +175,9 @@ int computer_choice(int pile)
 {
     int lower = 1;
     int upperLimit = 3;
-    int counter;
     int num;
+    num = (rand() % (upperLimit - lower + 1)) + lower;
 
-    for (int i = 0; i < counter; i++)
-    {
-        num = (rand() % (upperLimit - lower + 1)) + lower;
-    }
     if (pile == 4)
     {
         num = 3;
@@ -200,17 +196,12 @@ int computer_choice(int pile)
 void write_winner(int player)
 {
 
-    int num;
     if (player == 0)
     {
-        num = 1;
-        player = num;
         printf("WINNER IS COMPUTER !\n ");
     }
-    else if (player == 1)
+    else
     {
-        num = 0;
-        player = num;
         printf("WINNER IS HUMAN !\n ");
     }
 }
