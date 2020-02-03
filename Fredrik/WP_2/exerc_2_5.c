@@ -22,7 +22,7 @@ int main(void)
 
     for (int i = 0; i < MAX; i++)
     {
-        //  printf("%d#: %d \n", i, *tblptr);
+        printf("%d#: %d \n", i, tblptr);
         tblptr++;
     }
 }
@@ -48,10 +48,11 @@ void count_frequency(int *tab, int *freq)
         if (*ptr == *tab)
         {
 
-            printf("hey %d", i);
+            *freq = *ptr;
+            //printf("oh snap theyre equal, saved into freq arr! (ptr = %d) %d \n", *ptr, *freq);
         }
 
-        printf("%d#:  %d -- %d\n", i, *ptr, *tab);
+        //  printf("%d#:  %d -- %d\n", i, *ptr, *tab);
         tab++;
     }
 }
