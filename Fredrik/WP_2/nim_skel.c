@@ -125,7 +125,7 @@ int main()
    */
 
     write_winner(player);
-
+    play_again();
     printf("Avslutat\n");
 
     return 0;
@@ -149,6 +149,7 @@ int human_choice(int pile)
 {
     int num;
     int flag = 0;
+    printf("Take 1, 2 or 3 coins : \n");
     while (flag == 0)
     {
         scanf("%d", &num);
@@ -167,8 +168,16 @@ int human_choice(int pile)
 
 int computer_choice(int pile)
 {
-    int num = 1;
-    pile = num;
+    int lower = 1;
+    int upperLimit = 3;
+    int counter;
+    int num;
+    for (int i = 0; i < counter; i++)
+    {
+        num = (rand() % (upperLimit - lower + 1)) + lower;
+        printf("%d", num);
+    }
+    return num;
 }
 
 void write_winner(int player)
@@ -187,17 +196,36 @@ void write_winner(int player)
         player = num;
         printf("WINNER IS HUMAN !\n ");
     }
-
-    /*
- * write_winner
- * Write winner as a string on stdout.
- * in: Values HUMAN or COMPUTER.
- * out:
- */
 }
 
+/*
+ * play_again
+ * Ask human if he/she wants to play
+ * another round. If 'n' or 'N' selected
+ * (single char) return false else true.
+ * Clears stdin.
+ * in: 
+ * out: true or false
+ */
 int play_again()
 {
+    bool turn;
+    printf("Do you want to play again ? ");
+    char option;
+    scanf("%c", &option);
+
+    if (option == 'y')
+    {
+        turn = true;
+        printf("Welcome to next round! ");
+        main();
+    }
+    else if (option == 'N' || 'n')
+    {
+        turn = false;
+        printf("Byebye \n");
+    }
+    return turn;
 }
 
 int toggle(int player)
