@@ -149,6 +149,7 @@ int human_choice(int pile)
 {
     int num;
     int flag = 0;
+    printf("Take 1, 2 or 3 coins : \n");
     while (flag == 0)
     {
         scanf("%d", &num);
@@ -167,8 +168,16 @@ int human_choice(int pile)
 
 int computer_choice(int pile)
 {
-    int num = 1;
-    pile = num;
+    int lower = 1;
+    int upperLimit = 3;
+    int counter;
+    int num;
+    for (int i = 0; i < counter; i++)
+    {
+        num = (rand() % (upperLimit - lower + 1)) + lower;
+        printf("%d", num);
+    }
+    return num;
 }
 
 void write_winner(int player)
