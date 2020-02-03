@@ -28,8 +28,15 @@ int main() {
     return 0;
 }
 
+void turn(ROBOT *ptr) {
+    ptr -> dir++;
+}
 void move(ROBOT *ptr) {
-    if(ptr -> xpos != 99) {
-        ptr -> xpos++;
+    //implement check for direction to decide on the right way to move
+    if(ptr -> dir == N) {
+        
     }
+    if (ptr -> xpos != 99) {
+        ptr -> xpos++;
+    } 
 }
