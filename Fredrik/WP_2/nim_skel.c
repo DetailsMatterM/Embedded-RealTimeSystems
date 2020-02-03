@@ -111,9 +111,13 @@ int main()
             printf(" Computer took %d ... ", n_coins);
         }
         pile -= n_coins;
+        if (pile == 0)
+        {
+            printf("Oops all remaining coins were taken \n");
+            break;
+        }
 
         player = toggle(player);
-
         if (pile <= 1)
         {
 
@@ -172,10 +176,22 @@ int computer_choice(int pile)
     int upperLimit = 3;
     int counter;
     int num;
+
     for (int i = 0; i < counter; i++)
     {
         num = (rand() % (upperLimit - lower + 1)) + lower;
-        printf("%d", num);
+    }
+    if (pile == 4)
+    {
+        num = 3;
+    }
+    else if (pile == 3)
+    {
+        num = 2;
+    }
+    else if (pile == 2)
+    {
+        num = 1;
     }
     return num;
 }
@@ -197,16 +213,6 @@ void write_winner(int player)
         printf("WINNER IS HUMAN !\n ");
     }
 }
-
-/*
- * play_again
- * Ask human if he/she wants to play
- * another round. If 'n' or 'N' selected
- * (single char) return false else true.
- * Clears stdin.
- * in: 
- * out: true or false
- */
 int play_again()
 {
     bool turn;
