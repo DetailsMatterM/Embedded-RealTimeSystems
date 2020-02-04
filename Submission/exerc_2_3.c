@@ -6,7 +6,7 @@ int main(int argc, char *argv[])
 
     if (argc != 3)
     {
-        printf("Type : %s firstWord secondWord\n", argv[0]);
+        printf("To use this program, enter just 2 strings.\nType : %s firstWord secondWord\n", argv[0]);
         return 1;
     }
     printf(" First word  : %s\n Second word : %s\n", argv[1], argv[2]);
