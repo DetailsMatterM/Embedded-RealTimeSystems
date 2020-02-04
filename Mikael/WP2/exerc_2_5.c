@@ -20,7 +20,7 @@ int main(){
 void create_random(int *tab){
     int i;
     for(i = 0; i < MAX; i++) {
-        *tab = rand() % MAXNUMBER;
+        *tab = rand() % MAXNUMBER; //Hello
        
         tab++;
     }
