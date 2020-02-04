@@ -61,7 +61,7 @@ int main(int argc, char *argv[])
         }
         if (allCorrect == 1)
         {
-            printf("Words are identical\ n");
+            printf("Words are identical \n");
         }
         else if (allCorrect == 0)
         {
