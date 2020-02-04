@@ -5,7 +5,7 @@
 
 void copyString(char * input, char * output);
 
-int main(char textInput [20]) {
+int main() {
     char textSource [MAX];
     char textCopy [MAX];
     char textCopyCustom [MAX];
