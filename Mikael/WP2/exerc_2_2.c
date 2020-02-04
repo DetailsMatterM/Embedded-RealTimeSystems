@@ -1,13 +1,13 @@
 #include <stdio.h>
 #include <stdlib.h>
-#define MAX 10
+#define MAX 100
 
 int main(){
     int randomArr [MAX];
     srand(time(NULL));
 
     int i = 0;
-    while(randomArr[i] != NULL){
+    while(randomArr[i] != MAX){
         randomArr[i] = rand() % 100;
         printf("Number %d: %d\n", i, randomArr[i]);                     //Print each index of randomArr
         i++;
