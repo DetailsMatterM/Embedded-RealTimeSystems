@@ -3,7 +3,7 @@ File name: exerc_2_2.c
 Date: 2020-02-07
 Group nr 7
 Members that contribute to the solutions
-Moriz Denke 
+Moriz Denke  
 Mikael Köse Jansson 
 Fredrik Ullman
 Member not present at demonstration time:
@@ -55,24 +55,20 @@ int randomizeNumbers()
 
         // This prints all saved integers with the temporarily saved integer and place in array
         //printf("%d # :  %d and temp %d\n", i, array[i], temp);
-        int *intptr;
-        intptr = &array[i];
+        int *intptr = &array[i];
 
-        int *doublepointer;
-        doublepointer = &array[i];
-
-        printf("Integer value : %d\n Double value  : %f\n ****\n ", *intptr, (double)*doublepointer);
+        printf("Integer value : %d\n Double value  : %f\n ****\n ", *intptr, (double)*intptr);
     }
     int size = sizeof(array);
 
     printf("The value  of the label array (address) is: %p \n", arrayPointer);
     printf(" First integer in the array is (%d): \n", array[0]);
     printf(" The size of an integer is (number of bytes) is %lu \n ", sizeof(int));
-    printf("The size of the whole array is : %lu \n", array);
+    printf("The size of the whole array is : %zu \n", sizeof(array));
 }
 int main()
 {
 
     randomizeNumbers();
-    // checkForZeroes();
+    checkForZeroes();
 }

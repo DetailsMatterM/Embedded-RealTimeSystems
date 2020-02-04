@@ -22,7 +22,7 @@ int main(void)
 
     for (int i = 0; i < MAX; i++)
     {
-        printf("%d#: %d \n", i, tblptr);
+        // printf("%d#: %d \n", i, tblptr);
         tblptr++;
     }
 }
@@ -40,7 +40,7 @@ void create_random(int *tab)
 void count_frequency(int *tab, int *freq)
 {
     int tempArr[MAX];
-    int *ptr = tempArr;
+    int *ptr = &tempArr;
     *ptr = *tab;
 
     for (int i = 0; i < MAX; i++)
@@ -49,10 +49,11 @@ void count_frequency(int *tab, int *freq)
         {
 
             *freq = *ptr;
-            //printf("oh snap theyre equal, saved into freq arr! (ptr = %d) %d \n", *ptr, *freq);
+            printf("oh snap theyre equal, saved into freq arr! (ptr = %d) %d \n", *ptr, *freq);
+            freq++;
         }
 
-        //  printf("%d#:  %d -- %d\n", i, *ptr, *tab);
+        printf("%d#:  %d -- %d\n", i, *ptr, *tab);
         tab++;
     }
 }
