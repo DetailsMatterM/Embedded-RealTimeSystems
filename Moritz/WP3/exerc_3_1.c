@@ -20,11 +20,11 @@ int main() {
     char input [MAX];
     printf("Please define the roboters starting position\n");
     printf("Coordinate x (between 0 and 99)\n");
-    scanf("%d", &ptr -> xpos);//use pointer instead
+    scanf("%d", &ptr -> xpos);
     printf("Coordinate y (between 0 and 99)\n");
     scanf("%d", &ptr -> ypos);
-    ptr -> dir = N;//pointer
-    printf("\nX coordinate is %d and y coordinate is %d", ptr -> xpos, ptr -> ypos);//pointer
+    ptr -> dir = N;
+    printf("\nX coordinate is %d and y coordinate is %d", ptr -> xpos, ptr -> ypos);
     printf("\nPlease enter a string of m and t(maximal length 20), m standing for move and t for turn\n");
     fflush(stdin);
     fgets(input, MAX, stdin);
@@ -44,7 +44,6 @@ void turn(ROBOT *ptr) {
     ptr -> dir++;
 }
 void move(ROBOT *ptr) {
-    //implement check for direction to decide on the right way to move
     if (ptr -> dir == N && ptr -> ypos != 99) {
         ptr -> ypos++;
     } else if (ptr -> dir == O && ptr -> xpos != 99) {
