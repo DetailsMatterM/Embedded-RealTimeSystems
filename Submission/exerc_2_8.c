@@ -1,11 +1,14 @@
-/*
- *  File    : nim.c 
- *  Program : Nim game
- *  Author  : 
- * Fredrik Ullman
- * Moritz Denke
- * Mikael Jansson
- */
+/* ====================================
+File name: exerc_2_8.c 
+Date: 2020-02-06
+Group nr 7
+Members that contribute to the solutions
+Fredrik Ullman
+Mikael Köse Jansson
+Moritz Denke
+
+Demonstration code: [43920] Important , No code no exercise points !
+====================================== */
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -179,15 +182,15 @@ int computer_choice(int pile)
 
     if (pile == 4)
     {
-        num = 3;
+        num = pile - 1;
     }
     else if (pile == 3)
     {
-        num = 2;
+        num = pile - 1;
     }
     else if (pile == 2)
     {
-        num = 1;
+        num = pile - 1;
     }
     return num;
 }

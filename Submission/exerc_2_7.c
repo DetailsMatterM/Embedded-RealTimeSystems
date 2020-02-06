@@ -1,3 +1,14 @@
+/* ====================================
+File name: exerc_2_7.c 
+Date: 2020-02-06
+Group nr 7
+Members that contribute to the solutions
+Fredrik Ullman
+Mikael Köse Jansson
+Moritz Denke
+
+Demonstration code: [45256] Important , No code no exercise points !
+====================================== */
 #include <stdio.h>
 
 #define LENGTH 11

@@ -1,9 +1,20 @@
+/* ====================================
+File name: exerc_2_5.c 
+Date: 2020-02-06
+Group nr 7
+Members that contribute to the solutions
+Fredrik Ullman
+Mikael Köse Jansson
+Moritz Denke
+
+Demonstration code: [44544] Important , No code no exercise points !
+====================================== */
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
 
-#define MAX 100
-#define MAXNUMBER 20
+#define MAX 10
+#define MAXNUMBER 4
 
 void create_random(int *tab);
 void count_frequency(int *tab, int *freq);
