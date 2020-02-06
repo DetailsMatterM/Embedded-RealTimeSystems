@@ -12,7 +12,6 @@ int main() {
 
     strcpy(revPalStr, palStr);          //Copy string
     strrev(revPalStr);                  //Reverse string
-    strcmp(palStr, revPalStr);          //Compare both strings
 
     if (strcmp(palStr, revPalStr) != 0) {
         printf("\n%s : This word is no palindrome", palStr);

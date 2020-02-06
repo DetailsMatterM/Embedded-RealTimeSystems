@@ -46,7 +46,7 @@ int main(int argc, char *argv[])
     }
     else
     {
-        printf( "Sorry, not all letters were identical \n");
+        printf( "Sorry, the words are not identical\n");
     }
     
     return 0;
