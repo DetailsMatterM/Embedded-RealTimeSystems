@@ -13,8 +13,8 @@ Demonstration code: [44544] Important , No code no exercise points !
 #include <stdlib.h>
 #include <time.h>
 
-#define MAX 10
-#define MAXNUMBER 4
+#define MAX 100
+#define MAXNUMBER 20
 
 void create_random(int *tab);
 void count_frequency(int *tab, int *freq);
@@ -24,8 +24,8 @@ int main() {
     int table [MAX], n;
     int frequency[MAXNUMBER];
 
-    int *tab = &table;
-    int *freq = &frequency;
+    int *tab = table;
+    int *freq = frequency;
 
     create_random(tab);
     count_frequency(tab, freq);
