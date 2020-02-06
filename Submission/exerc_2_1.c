@@ -1,3 +1,14 @@
+/* ====================================
+File name: exerc_2_1.c 
+Date: 2020-02-06
+Group nr 7
+Members that contribute to the solutions
+Fredrik Ullman
+Mikael Köse Jansson
+Moritz Denke
+
+Demonstration code: [40366] Important , No code no exercise points !
+====================================== */
 #include <stdio.h>
 #include <string.h>
 

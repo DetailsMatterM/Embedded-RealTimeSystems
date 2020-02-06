@@ -1,11 +1,14 @@
-/*
- *  File    : nim.c 
- *  Program : Nim game
- *  Author  : 
- * Fredrik Ullman
- * Moritz Denke
- * Mikael Jansson
- */
+/* ====================================
+File name: exerc_2_8.c 
+Date: 2020-02-06
+Group nr 7
+Members that contribute to the solutions
+Fredrik Ullman
+Mikael Köse Jansson
+Moritz Denke
+
+Demonstration code: [43920] Important , No code no exercise points !
+====================================== */
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -177,18 +180,11 @@ int computer_choice(int pile)
     int upperLimit = 3;
     int num = (rand() % (upperLimit - lower + 1)) + lower;
 
-    if (pile == 4)
+    if (pile <= 4)
     {
-        num = 3;
+        num = pile - 1;
     }
-    else if (pile == 3)
-    {
-        num = 2;
-    }
-    else if (pile == 2)
-    {
-        num = 1;
-    }
+
     return num;
 }
 
@@ -206,7 +202,7 @@ void write_winner(int player)
 
 int play_again()
 {
-    printf("Do you want to play again? Type 'n' or 'N' if you don't want to play again! ");
+    printf("Do you want to play again? Type 'n' or 'N' if you don't want to play again, otherwise press enter! ");
     char option;
     scanf("%c", &option);
 

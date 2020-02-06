@@ -1,3 +1,15 @@
+/* ====================================
+File name: exerc_2_2.c 
+Date: 2020-02-06
+Group nr 7
+Members that contribute to the solutions
+Fredrik Ullman
+Mikael Köse Jansson
+Moritz Denke
+
+Demonstration code: [40090] Important , No code no exercise points !
+====================================== */
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
@@ -5,7 +17,7 @@
 int main() {
     srand(time(NULL));
     int random [MAX];
-    int * pointer = &random;
+    int * pointer = random;
     int i;
     for (i = 0; i < MAX; i++) {
         random[i] = (rand() % (99 - 1 + 1)) + 1;

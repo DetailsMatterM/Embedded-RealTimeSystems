@@ -1,3 +1,14 @@
+/* ====================================
+File name: exerc_2_3.c 
+Date: 2020-02-06
+Group nr 7
+Members that contribute to the solutions
+Fredrik Ullman
+Mikael Köse Jansson
+Moritz Denke
+
+Demonstration code: [45947] Important , No code no exercise points !
+====================================== */
 #include <stdio.h>
 #include <string.h>
 
@@ -46,7 +57,7 @@ int main(int argc, char *argv[])
     }
     else
     {
-        printf( "Sorry, not all letters were identical \n");
+        printf( "Sorry, the words are not identical\n");
     }
     
     return 0;
