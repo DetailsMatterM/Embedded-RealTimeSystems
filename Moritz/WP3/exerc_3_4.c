@@ -27,7 +27,10 @@ void append_file (PERSON *inrecord);// appends a new person to the file
 int createNewFile();
 
 int main (void) {
-    printf("Welcome to the person register. How may we be of service?\nChose one of the following options"
+    
+    int endCheck = 0;
+    while (endCheck == 0) {
+        printf("Welcome to the person register. How may we be of service?\nChose one of the following options"
            "by typing the according number:\n"
            "1 Create a new and delete the old file.\n"
            "2 Add a new person to the file.\n"
@@ -35,42 +38,44 @@ int main (void) {
            "4 Print out all in the file.\n"
            "5 Exit the program.\n");
 
-    int input;
-    scanf ("%d", &input);
-    switch(input) {
+        int input;
+        scanf ("%d", &input);
+        switch(input) {
         case 1:
             printf("Your file will be generated.\n");
-            int check = createNewFile();
-            if (check == 0) {
-                printf("Your file has been created successfully.\n");
-            } else {
-                printf("Your file could not be created\n");
-            }
+            PERSON dummyPerson;
+            PERSON *dummy = &dummyPerson;
+            write_new_file(dummy);
             break;
         case 2:
-            printf("Please enter a personnumer");
+            fflush(stdin);
+            printf("Please enter a first name (max length 19)\n");
             PERSON person;
             PERSON *pers = &person;
+            fgets(pers -> firstname, 20, stdin);
+            printf("Please enter a last name (max length 19)\n");
+            fgets(pers-> famnamne, 20, stdin);
+            printf("Please enter a personnumer\n");
             fgets(pers -> pers_number, 13, stdin);
-
-            //write_new_file(pers);
-
+            //append_file(pers);
+            break;
+        case 5:
+            endCheck = 1;
+            break;
+        }
     }
-    PERSON ppost;
+    
+    //PERSON ppost;
     return(0);
 }
 
-int createNewFile() {
+void write_new_file (PERSON *inrecord){
     char filename[] = {"personfile.txt"};
-    FILE* fileptr = NULL;
-    fileptr = fopen(filename,"w");
-    int result;
-    if(fileptr != NULL) {
-        fputs("dummyentry", fileptr);
-        result = 0;
-    } else {
-        result = 1;
-    }
+    FILE *fileptr = fopen(filename,"wb");
+    fwrite(inrecord, sizeof(PERSON), 1, fileptr);
     fclose(fileptr);
-    return result;
+}
+
+void append_file (PERSON *inrecord) {
+    
 }
