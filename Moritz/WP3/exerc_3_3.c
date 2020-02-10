@@ -11,9 +11,9 @@ DIT1165 Program file exerc_3_3.c **
 
 // ##### Typedefs ####
 typedef struct q {
-int number;
-struct q *next;
-struct q *prev;
+    int number;
+    struct q *next;
+    struct q *prev;
 } REGTYPE;
 
 // ##### Funcion declarations #####
@@ -45,6 +45,23 @@ int main (int argc, char *argv[]) {
 REGTYPE* random_list (void) {
     int nr,i = 0;
     REGTYPE *top, *old, *item;
+    top = (REGTYPE*) malloc (sizeof(REGTYPE));
+    nr = rand()% 100;
+    top -> number = nr;
+    top -> prev = NULL;
+    top -> next = NULL;
+    item = top;
+    i++;
+    while ( i < MAX) {
+        old = item;
+        item = (REGTYPE*) malloc(sizeof(REGTYPE));
+        nr = rand()% 100;
+        item -> number = nr;
+        item -> prev = old;
+        item -> next = NULL;
+        old -> next = item;
+        i++;
+    }
     return(top);
 }
 //==========================================================
