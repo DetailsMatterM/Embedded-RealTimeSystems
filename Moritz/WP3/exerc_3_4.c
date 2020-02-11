@@ -60,6 +60,13 @@ int main (void) {
             fgets(pers -> pers_number, 13, stdin);
             append_file(pers);
             break;
+        case 3:
+            fflush(stdin);
+            printf("Please enter the first name (max length 19) that you want to search for\n");
+            char firstname[20];
+            fgets(firstname, 20, stdin);
+            char *fname = &firstname;
+            search_by_firstname(fname);
         case 5:
             endCheck = 1;
             break;
@@ -82,4 +89,20 @@ void append_file (PERSON *inrecord) {
     FILE *fileptr = fopen(filename,"ab+");
     fwrite(inrecord, sizeof(PERSON), 1, fileptr);
     fclose(fileptr);   
+}
+
+void search_by_firstname (char *name) {
+    char filename[] = {"personfile.dat"};
+    FILE *fileptr = fopen(filename,"rb");
+    PERSON person;
+    PERSON *pers = &person;
+    while (!feof(fileptr)) {
+        if (fread(pers, sizeof(PERSON), 1, fileptr)) {
+            if ((pers->firstname) == name) {
+                printf("%s\n%s\n%s", pers->firstname, pers->famnamne, pers->pers_number);
+            } else {
+                pers++;
+            }
+        }
+    }
 }
