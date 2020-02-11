@@ -53,11 +53,12 @@ int main (void) {
             PERSON person;
             PERSON *pers = &person;
             fgets(pers -> firstname, 20, stdin);
+
             printf("Please enter a last name (max length 19)\n");
             fgets(pers-> famnamne, 20, stdin);
             printf("Please enter a personnumer\n");
             fgets(pers -> pers_number, 13, stdin);
-            //append_file(pers);
+            append_file(pers);
             break;
         case 5:
             endCheck = 1;
@@ -70,12 +71,15 @@ int main (void) {
 }
 
 void write_new_file (PERSON *inrecord){
-    char filename[] = {"personfile.txt"};
+    char filename[] = {"personfile.dat"};
     FILE *fileptr = fopen(filename,"wb");
     fwrite(inrecord, sizeof(PERSON), 1, fileptr);
     fclose(fileptr);
 }
 
 void append_file (PERSON *inrecord) {
-    
+    char filename[] = {"personfile.dat"};
+    FILE *fileptr = fopen(filename,"ab+");
+    fwrite(inrecord, sizeof(PERSON), 1, fileptr);
+    fclose(fileptr);   
 }
