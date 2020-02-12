@@ -73,6 +73,7 @@ int main (void) {
             break;
         case 5:
             endCheck = 1;
+            printf("Good Bye!");
             break;
         }
     }
@@ -118,7 +119,7 @@ void printfile (void) {
     FILE *fileptr = fopen(filename,"rb");
     PERSON person;
     PERSON *pers = &person;
-    int n = 0;
+    int n = 1;
     char temp [13];
     while(fileptr != NULL){
         fseek (fileptr, n * sizeof(PERSON), SEEK_SET);
