@@ -138,8 +138,7 @@ void printfile (void) {
     while(fileptr != NULL){
         fseek (fileptr, n * sizeof(PERSON), SEEK_SET);
         fread (&person, sizeof(PERSON), 1, fileptr);
-        int a = strcmp(temp, person.pers_number);
-        if(a != 0) {
+        if((strcmp(temp, person.pers_number)) != 0) {
             printf("\n%s%s%s\n", pers->firstname, pers->famnamne, pers->pers_number);
             strcpy(temp, pers->pers_number);
             n++;
