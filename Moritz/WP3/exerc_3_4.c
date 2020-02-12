@@ -67,6 +67,10 @@ int main (void) {
             fgets(firstname, 20, stdin);
             char *fname = &firstname;
             search_by_firstname(fname);
+            break;
+        case 4:
+            printfile();
+            break;
         case 5:
             endCheck = 1;
             break;
@@ -96,13 +100,37 @@ void search_by_firstname (char *name) {
     FILE *fileptr = fopen(filename,"rb");
     PERSON person;
     PERSON *pers = &person;
-    while (!feof(fileptr)) {
-        if (fread(pers, sizeof(PERSON), 1, fileptr)) {
-            if ((pers->firstname) == name) {
-                printf("%s\n%s\n%s", pers->firstname, pers->famnamne, pers->pers_number);
-            } else {
-                pers++;
-            }
+    int n = 0;
+    while (fileptr != NULL) {
+        fseek (fileptr, n * sizeof(PERSON), SEEK_SET);
+        fread (&person, sizeof(PERSON), 1, fileptr);
+        if ((strcmp(person.firstname, name)) == 0) {
+            printf("%s%s%s\n", pers->firstname, pers->famnamne, pers->pers_number);
+            fclose(fileptr);
+            break;
+        }
+        n++;
+    }
+}
+
+void printfile (void) {
+    char filename[] = {"personfile.dat"};
+    FILE *fileptr = fopen(filename,"rb");
+    PERSON person;
+    PERSON *pers = &person;
+    int n = 0;
+    char temp [13];
+    while(fileptr != NULL){
+        fseek (fileptr, n * sizeof(PERSON), SEEK_SET);
+        fread (&person, sizeof(PERSON), 1, fileptr);
+        int a = strcmp(temp, person.pers_number);
+        if(a != 0) {
+            printf("%s%s%s\n", pers->firstname, pers->famnamne, pers->pers_number);
+            strcpy(temp, pers->pers_number);
+            n++;
+        } else {
+            break;
         }
     }
+   fclose(fileptr);
 }
