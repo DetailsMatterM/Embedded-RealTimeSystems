@@ -2,7 +2,7 @@
 #include <stdio.h>
 
 int search_number(int number, int tab[], int size);
-void bubbleSort(int tab[], int number);
+void sort(int tab[], int number);
 void printArray(int tab[], int size);
 
 int main()
@@ -19,7 +19,7 @@ int main()
     printArray(test, size);
 
     printf("\nSorted Array\n");
-    bubbleSort(test, size);
+    sort(test, size);
     printArray(test, size);
 
     return 0;
@@ -44,7 +44,7 @@ int search_number(int number, int tab[], int size)
     }
 }
 
-void bubbleSort(int tab[], int number)
+void sort(int tab[], int number)
 {
     int i, j, temp;
     for (i = 0; i < number; i++)
