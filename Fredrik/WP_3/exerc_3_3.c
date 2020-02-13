@@ -3,7 +3,7 @@
 #include <time.h>
 //#### Konstanter #####
 #define MAX 5
-// ##### Typedefs        ####
+// ##### Typedefs         ####
 typedef struct q
 {
     int number;
@@ -24,6 +24,16 @@ int main(int argc, char *argv[])
     //   Random seed
     head = random_list();
     akt_post = head;
+    while (akt_post != NULL)
+    {
+        printf("\n Post nr %d : %d ",
+               nr++, akt_post->number);
+        akt_post = akt_post->next;
+    }
+    head = add_first(head, 49);
+    akt_post = head;
+    nr = 0;
+    printf("\n Updated list : \n");
     while (akt_post != NULL)
     {
         printf("\n Post nr %d : %d",
@@ -64,7 +74,17 @@ REGTYPE *random_list(void)
     }
     return (top);
 }
-//==========================================================
-// REGTYPE *add_first(REGTYPE *temp, int data)
-// {
-//     }
+REGTYPE *add_first(REGTYPE *temp, int data)
+{
+    REGTYPE *first;
+    //allocate a node
+    first = (REGTYPE *)malloc(sizeof(REGTYPE));
+    //put in data
+    first->number = data;
+    //make next of fist as head
+    first->next = temp;
+    //move head to point to first
+    first->prev = NULL;
+    temp->prev = first;
+    return first;
+}
