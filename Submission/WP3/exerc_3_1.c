@@ -1,5 +1,13 @@
-//45412
-
+/* ====================================
+File name: exerc_3_1.c (or cpp)
+Date: 2019-02-13
+Group Number:07
+Members that contributed:
+Fredrik Ullman
+Mikael Köse Jansson
+Moritz Denke
+Demonstration code: [45412] Important !
+====================================== */
 #include <stdio.h>
 #define MAX 21
 enum DIRECTION{N,O,S,W};

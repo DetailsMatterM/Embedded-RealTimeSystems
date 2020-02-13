@@ -1,3 +1,15 @@
+//41214
+/* ====================================
+File name: exerc_3_3.c (or cpp)
+Date: 2019-02-13
+Group Number:07
+Members that contributed:
+Fredrik Ullman
+Mikael Köse Jansson
+Moritz Denke
+Demonstration code: [41214] Important !
+====================================== */
+//
 /********************************************
 DIT1165 Program file exerc_3_3.c **
 2018-01-04 **
@@ -41,6 +53,7 @@ int main (int argc, char *argv[]) {
         printf ("\n Post nr %d : %d" , nr++, akt_post -> number);
         akt_post = akt_post->next;
     }
+   
     // --- Free of allocated memory ---
     while ((akt_post=head) != NULL) {
         head = akt_post->next;

@@ -42,14 +42,7 @@ int main (int argc, char *argv[]) {
         printf ("\n Post nr %d : %d" , nr++, akt_post -> number);
         akt_post = akt_post->next;
     }
-    head = add_first(head, "a");
-    akt_post = head;
-    nr = 0;
-    printf("\n\nList after addition of first record:");
-    while ( akt_post != NULL) {
-        printf ("\n Post nr %d : %d" , nr++, akt_post -> number);
-        akt_post = akt_post->next;
-    }
+   
     // --- Free of allocated memory ---
     while ((akt_post=head) != NULL) {
         head = akt_post->next;
