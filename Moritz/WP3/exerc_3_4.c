@@ -97,7 +97,7 @@ int main (void) {
                     char *fname = lastname;
                     search_by_lastname(fname);
                 }
-                
+            
                 fflush(stdin);
                 break;
             case 4:
@@ -141,14 +141,19 @@ void search_by_firstname (char *name) {
     long size = ftell (fileptr) ;
     rewind (fileptr);
     double counter = 0;
+    int flag = 0;
     while (counter < size) {
         fseek (fileptr, n * sizeof(PERSON), SEEK_SET);
         fread (&person, sizeof(PERSON), 1, fileptr);
         if ((strcmp(person.firstname, name)) == 0) {
             printf("\n%s%s%s\n", pers->firstname, pers->famnamne, pers->pers_number);
+            flag = 1;
         }
         n++;
         counter = counter + sizeof(person);
+    }
+    if (flag == 0) {
+        printf("Requested person not in database.\n");
     }
     fclose(fileptr);
 }
@@ -163,14 +168,19 @@ void search_by_lastname (char *name) {
     long size = ftell (fileptr) ;
     rewind (fileptr);
     double counter = 0;
+    int flag = 0;
     while (counter < size) {
         fseek (fileptr, n * sizeof(PERSON), SEEK_SET);
         fread (&person, sizeof(PERSON), 1, fileptr);
         if ((strcmp(person.famnamne, name)) == 0) {
             printf("\n%s%s%s\n", pers->firstname, pers->famnamne, pers->pers_number);
+            flag = 1;
         }
         n++;
         counter = counter + sizeof(person);
+    }
+    if (flag == 0) {
+        printf("Requested person not in database.\n");
     }
     fclose(fileptr);
 }
