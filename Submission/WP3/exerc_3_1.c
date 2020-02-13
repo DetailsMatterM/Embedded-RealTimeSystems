@@ -1,3 +1,5 @@
+//45412
+
 #include <stdio.h>
 #define MAX 21
 enum DIRECTION{N,O,S,W};
@@ -40,7 +42,11 @@ int main() {
 
 void turn(ROBOT *ptr) {
     ptr -> dir++;
+      if ((ptr->dir) == 4) {
+        ptr -> dir = 0;
+    }
 }
+
 void move(ROBOT *ptr) {
     if (ptr -> dir == N && ptr -> ypos != 99) {
         ptr -> ypos++;

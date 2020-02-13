@@ -1,4 +1,3 @@
-//41214
 /********************************************
 DIT1165 Program file exerc_3_3.c **
 2018-01-04 **
@@ -35,14 +34,6 @@ int main (int argc, char *argv[]) {
     }
 
     head = add_first(head, 5);
-    akt_post = head;
-    nr = 0;
-    printf("\n\nList after addition of first record:");
-    while ( akt_post != NULL) {
-        printf ("\n Post nr %d : %d" , nr++, akt_post -> number);
-        akt_post = akt_post->next;
-    }
-    head = add_first(head, "a");
     akt_post = head;
     nr = 0;
     printf("\n\nList after addition of first record:");

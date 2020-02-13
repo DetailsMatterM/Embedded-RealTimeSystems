@@ -52,14 +52,10 @@ int main (void) {
 
         int input;
         scanf ("%d", &input);
-        fflush(stdin);
         switch(input) {
             case 1:
                 printf("Your file will be generated.\n");
                 PERSON dummyPerson;
-                strcpy(dummyPerson.famnamne, "assad");
-                strcpy(dummyPerson.firstname, "khb");
-                strcpy(dummyPerson.pers_number, "56758");
                 PERSON *dummy = &dummyPerson;
                 write_new_file(dummy);
                 break;
@@ -87,7 +83,6 @@ int main (void) {
                 break;
             case 4:
                 printfile();
-                fflush(stdin);
                 break;
             case 5:
                 endCheck = 1;
@@ -123,22 +118,18 @@ void search_by_firstname (char *name) {
     PERSON person;
     PERSON *pers = &person;
     int n = 0;
-    fseek (fileptr, 0 , SEEK_END);
-    long size = ftell (fileptr) ;
-    rewind (fileptr);
-    double counter = 0;
-    while (counter < size) {
+    while (fileptr != NULL) {
         fseek (fileptr, n * sizeof(PERSON), SEEK_SET);
         fread (&person, sizeof(PERSON), 1, fileptr);
         if ((strcmp(person.firstname, name)) == 0) {
-            printf("\n%s%s%s\n", pers->firstname, pers->famnamne, pers->pers_number);
+            printf("%s%s%s\n", pers->firstname, pers->famnamne, pers->pers_number);
+            fclose(fileptr);
+            break;
         }
         n++;
-        counter = counter + sizeof(person);
     }
-    fclose(fileptr);
 }
-
+//change this
 void printfile (void) {
     char filename[] = {"personfile.dat"};
     FILE *fileptr = fopen(filename,"rb");
@@ -149,19 +140,20 @@ void printfile (void) {
         PERSON person;
         PERSON *pers = &person;
         int n = 1;
+        char temp [13];
         printf("People in the register:\n");
-        fseek (fileptr, 0 , SEEK_END);
-        long size = ftell (fileptr) ;
-        rewind (fileptr);
-        double counter = 0;
-        double personSize = sizeof(person);
-        while (counter < (size-personSize)){
+        while (fileptr != NULL){
             fseek (fileptr, n * sizeof(PERSON), SEEK_SET);
             fread (&person, sizeof(PERSON), 1, fileptr);
-            printf("\n%s%s%s\n", pers->firstname, pers->famnamne, pers->pers_number);
-            counter = counter + personSize;
-            n++;
+            if ((strcmp(temp, person.pers_number)) != 0) {
+                printf("\n%s%s%s\n", pers->firstname, pers->famnamne, pers->pers_number);
+                strcpy(temp, pers->pers_number);
+                n++;
+            } else {
+                fclose(fileptr);
+                break;
+            }
         }
-        fclose(fileptr);
     }
+   
 }
