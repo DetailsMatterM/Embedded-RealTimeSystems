@@ -89,6 +89,10 @@ int main (void) {
                 endCheck = 1;
                 printf("Good Bye!");
                 break;
+            default:
+                printf("Please enter valid input!\n");
+                fflush(stdin);
+                break;
         }
     }
 
@@ -103,7 +107,7 @@ void write_new_file (PERSON *inrecord){
 }
 
 void append_file (PERSON *inrecord) {
-    char filename[] = {"personfile.dat"};
+    char filename[] = {"personfil.dat"};
     FILE *fileptr = fopen(filename,"ab+");
     fwrite(inrecord, sizeof(PERSON), 1, fileptr);
     fclose(fileptr);
@@ -122,6 +126,9 @@ void search_by_firstname (char *name) {
             printf("%s%s%s\n", pers->firstname, pers->famnamne, pers->pers_number);
             fclose(fileptr);
             break;
+        } else {
+            printf("The person you were looking for is not present in the database.\n");
+            break;
         }
         n++;
     }
@@ -130,21 +137,27 @@ void search_by_firstname (char *name) {
 void printfile (void) {
     char filename[] = {"personfile.dat"};
     FILE *fileptr = fopen(filename,"rb");
-    PERSON person;
-    PERSON *pers = &person;
-    int n = 1;
-    char temp [13];
-    printf("People in the register:\n");
-    while(fileptr != NULL){
-        fseek (fileptr, n * sizeof(PERSON), SEEK_SET);
-        fread (&person, sizeof(PERSON), 1, fileptr);
-        if((strcmp(temp, person.pers_number)) != 0) {
-            printf("\n%s%s%s\n", pers->firstname, pers->famnamne, pers->pers_number);
-            strcpy(temp, pers->pers_number);
-            n++;
-        } else {
-            fclose(fileptr);
-            break;
+    if (fileptr == NULL) {
+        printf("The file has not been found.\n");
+        return;
+    } else {
+        PERSON person;
+        PERSON *pers = &person;
+        int n = 1;
+        char temp [13];
+        printf("People in the register:\n");
+        while(fileptr != NULL){
+            fseek (fileptr, n * sizeof(PERSON), SEEK_SET);
+            fread (&person, sizeof(PERSON), 1, fileptr);
+            if((strcmp(temp, person.pers_number)) != 0) {
+                printf("\n%s%s%s\n", pers->firstname, pers->famnamne, pers->pers_number);
+                strcpy(temp, pers->pers_number);
+                n++;
+            } else {
+                fclose(fileptr);
+                break;
+            }
         }
     }
+   
 }
