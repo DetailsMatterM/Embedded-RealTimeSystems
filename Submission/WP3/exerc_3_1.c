@@ -6,7 +6,7 @@ Members that contributed:
 Fredrik Ullman
 Mikael Köse Jansson
 Moritz Denke
-Demonstration code: [<Ass code 1-3> <abc>] Important !
+Demonstration code: [45412] Important !
 ====================================== */
 #include <stdio.h>
 #define MAX 21
@@ -50,7 +50,11 @@ int main() {
 
 void turn(ROBOT *ptr) {
     ptr -> dir++;
+      if ((ptr->dir) == 4) {
+        ptr -> dir = 0;
+    }
 }
+
 void move(ROBOT *ptr) {
     if (ptr -> dir == N && ptr -> ypos != 99) {
         ptr -> ypos++;

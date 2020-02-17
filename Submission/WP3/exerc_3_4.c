@@ -1,11 +1,12 @@
-//22204
 /* ====================================
 File name: exerc_3_4.c (or cpp)
-Date: 2019-mm-dd
-Group Number:xxxx
+Date: 2019-02-13
+Group Number:07
 Members that contributed:
-
-Demonstration code: [<Ass code 1-3> <abc>] Important !
+Fredrik Ullman
+Mikael Köse Jansson
+Moritz Denke
+Demonstration code: [22204] Important !
 ====================================== */
 
 #include <stdlib.h>
