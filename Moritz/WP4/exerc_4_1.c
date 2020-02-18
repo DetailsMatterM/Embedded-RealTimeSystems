@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 int main (int argc, char *argv[]) {
     if (argc < 5 || argc > 6) {
         printf("Type : exerc_4_1.exe engine_on parameter, gear_pos parameter, key_pos parameter, brake 2 parameter and brake1 parameter\n");
@@ -10,9 +11,17 @@ int main (int argc, char *argv[]) {
         char brake2 = atoi(argv[5]);
         unsigned char b = (engine_on << 7) ^ (gear_pos << 4) ^ (key_pos << 2) ^ (brake2 << 1) ^ brake1;
         
+        char outputa [8];
+        int a = 0;
         for (int i = 7; 0 <= i; i--) {
-            printf("%c", (b & (1 << i)) ? '1' : '0');
+            outputa[a] = (b & (1 << i)) ? '1' : '0';
+            a++;
         }
+        char* pointera = outputa;
+        char hexString[12];
+        int value = (int)strtol(pointera, NULL, 2);
+        sprintf(hexString, "%X", value);
+        printf(hexString);
     }   
 }
     
