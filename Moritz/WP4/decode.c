@@ -1,9 +1,17 @@
-#include <stdio.h>
-#include <stdlib.h>
 int main (int argc, char *argv[]) {
-    if (argc < 5 || argc > 6) {
+    if (argc != 2) {
         printf("Type : exerc_4_1.exe engine_on parameter, gear_pos parameter, key_pos parameter, brake 2 parameter and brake1 parameter\n");
     } else {
+
+        unsigned char a = argc[1];
+
+
+
+
+
+
+
+
         char engine_on = atoi(argv[1]);
         char gear_pos = atoi(argv[2]);
         char key_pos = atoi(argv[3]);
