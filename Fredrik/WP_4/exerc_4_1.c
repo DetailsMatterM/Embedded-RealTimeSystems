@@ -30,12 +30,12 @@ int main(int argc, char *argv[])
     //all these explanation are attempts to clarify the line of code underneath each comment section. so all this first text is for "byte |= brake2;" on line 38(ish)
     // theyre also following the example input " ./exerc_4_2 1 2 2 1 1"
     // first, we say that the variable "byte" which is 0000 0000 is = byte | brake2,
-    //brake2 is assigned to an argument which in our example is the value 2, in binary thats 0000 0010
-    // so we perform a comparison using truth tables to both numbers.
+    //brake2 is assigned to a input argument which in our example is the value 1 (argv[5]), in binary thats 0000 0001
+    // so we perform a comparison using truth tables on both numbers.
     // 0000 0000
     // 0000 0001
     //__________
-    // 0000 0001 is the result of comparing both binary representations. hence, byte is now equal to 0000 0010.
+    // 0000 0001 is the result of comparing both binary representations. hence, byte is now equal to 0000 0001.
     byte |= brake2;
     displayBinary();
 
@@ -52,7 +52,7 @@ int main(int argc, char *argv[])
     // var byte is now 0000 0011. so 0000 0011 = 0000 0011 | (key_pos <<2)
     // (key_pos << 2) in our specific test case evaluates to 0000 0010 (because we pass 2 in the argument, "file.c 1 2 2 1 1")
     // so moving two steps to the left 0000 0010 == 0000 1000
-    // now we can compare them using our truth values (var byte and the binary value from key_pos)
+    // now we can compare them using our truth values (variable byte and the binary value from key_pos)
     // 0000 0011 - variable byte
     // 0000 1000 - key_pos
     // ________________
@@ -77,9 +77,5 @@ int main(int argc, char *argv[])
     // _____________________
     // 1010 1011 please tell me that this is the correct answer.
     byte |= (engine_on << 7);
-
-    for (int i = 7; 0 <= i; i--)
-    {
-        printf("%c", (byte & (1 << i)) ? '1' : '0');
-    }
+    displayBinary();
 }
