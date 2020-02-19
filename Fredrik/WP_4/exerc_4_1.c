@@ -2,7 +2,7 @@
 #include <stdlib.h>
 
 //this is the byte that we add all our bits to
-unsigned int byte = 0;
+unsigned char byte = 0;
 
 void displayBinary()
 {
@@ -27,7 +27,8 @@ int main(int argc, char *argv[])
     char brake1 = atoi(argv[4]);
     char brake2 = atoi(argv[5]);
 
-    //all these explanation are attempts to clarify the line of code underneath each comment section. so all this first text is for "byte |= brake2;"
+    //all these explanation are attempts to clarify the line of code underneath each comment section. so all this first text is for "byte |= brake2;" on line 38(ish)
+    // theyre also following the example input " ./exerc_4_2 1 2 2 1 1"
     // first, we say that the variable "byte" which is 0000 0000 is = byte | brake2,
     //brake2 is assigned to an argument which in our example is the value 2, in binary thats 0000 0010
     // so we perform a comparison using truth tables to both numbers.
