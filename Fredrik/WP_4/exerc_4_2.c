@@ -6,7 +6,7 @@ int main()
 
 {
 
-    char hex[17], bin[65] = "";
+    char hex[17], bin[8] = "";
 
     int i = 0;
 
@@ -151,6 +151,12 @@ int main()
     printf("\nHexademial number = %s\n", hex);
 
     printf("Binary number = %s", bin);
+    int test = (int)bin;
+    printf("num %d", test);
+    // int partA = (bin >> 6 & 0x03);
+    // int partB = (bin >> 4 & 0x03);
+    // int partC = (bin >> 2 & 0x03);
+    // int partD = (bin & 0x03);
 
     return 0;
 }
