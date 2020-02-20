@@ -18,8 +18,8 @@ int main (int argc, char *argv[]) {
             a++;
         }
         char* pointera = output;
-        char hexString[12];
-        int input = (int)strtol(pointera, NULL, 2);
+        char hexString[8];
+        int input = strtol(pointera, NULL, 2);
         sprintf(hexString, "%X", input);
         printf(hexString);
     }   
