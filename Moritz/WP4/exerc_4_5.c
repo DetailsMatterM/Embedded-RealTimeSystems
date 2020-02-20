@@ -25,7 +25,7 @@ byte getKeypadInput() {
         // Loop through all of the collumns and check:
         // If the input of a specific column is low,
         // one (or more) keys in that column is being pressed,
-        // and we will return the first one pressed
+        // we will return the first one pressed
         for (byte c = 0; c < columns; c++) {
             if (digitalRead(Input[c]) == LOW) {
                 // Loop through all of the rows, and set their
@@ -100,7 +100,7 @@ char toHex(byte num) {
 char last = '?';
 void loop() {
     // Poll the key every 1 millisecond
-    delay(1);
+    delay(10);
     // Get the current key input as a number from
     // getKeypadInput and convert to a hex code using
     // the helper function toHex above

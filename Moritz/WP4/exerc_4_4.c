@@ -18,7 +18,7 @@ void setup() {
 }
 
 void loop() {
-  if (PINB != B00000000) {
+  if (PINB != B00000001) {
   
     delay(1000);
     PORTD = PORTD << 1;
