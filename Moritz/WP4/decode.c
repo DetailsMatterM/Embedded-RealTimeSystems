@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-
+//27290
 int getnum(char c);
 
 int main (int argc, char *argv[]) {
