@@ -99,7 +99,7 @@ char toHex(byte num) {
 
 char last = '?';
 void loop() {
-    // Poll the key every 1 millisecond
+    // Poll the key every 10 millisecond
     delay(10);
     // Get the current key input as a number from
     // getKeypadInput and convert to a hex code using
