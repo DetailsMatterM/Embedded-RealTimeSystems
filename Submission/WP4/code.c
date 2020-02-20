@@ -27,9 +27,9 @@ int main (int argc, char *argv[]) {
             output[a] = (b & (1 << i)) ? '1' : '0';
             a++;
         }
-        char* pointera = output;
+        char* pointer = output;
         char hexString[8];
-        int input = strtol(pointera, NULL, 2);
+        int input = strtol(pointer, NULL, 2);
         sprintf(hexString, "%X", input);
         printf(hexString);
     }   
