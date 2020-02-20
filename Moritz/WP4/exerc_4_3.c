@@ -1,7 +1,7 @@
 #include <time.h>
 #include <stdio.h>
 #include <stdlib.h>
-
+//24877
 void f_delay(int);
 unsigned char random_inport(void);
 void printport(int);

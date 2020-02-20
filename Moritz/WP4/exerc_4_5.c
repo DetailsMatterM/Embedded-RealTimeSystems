@@ -2,7 +2,7 @@ const byte rows = 4;
 const byte columns = 4;
 const byte Output[rows] = {11, 10, 9, 8}; // Array of pins used as output for rows of keypad
 const byte Input[columns] = {7, 6, 5, 4}; // Array of pins used as input for columns of keypad
-
+//26422
 byte getKeypadInput() {
     // Loop through all of the colums and check their
     // voltages to see if any button is being pressed
@@ -99,7 +99,7 @@ char toHex(byte num) {
 
 char last = '?';
 void loop() {
-    // Poll the key every 1 millisecond
+    // Poll the key every 10 millisecond
     delay(10);
     // Get the current key input as a number from
     // getKeypadInput and convert to a hex code using
