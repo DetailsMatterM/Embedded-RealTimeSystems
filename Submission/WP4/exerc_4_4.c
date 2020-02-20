@@ -1,13 +1,3 @@
-/* ====================================
-File name: exerc_4_4.c 
-Date: 2019-02-20
-Group Number:07
-Members that contributed:
-Fredrik Ullman
-Mikael Köse Jansson
-Moritz Denke
-Demonstration code: [23533] Important !
-====================================== */
 #include <avr/io.h>
 #include <util/delay.h>
 //DDRB  Data direction register B
@@ -16,6 +6,7 @@ Demonstration code: [23533] Important !
 //DDRD  Data direction register D
 //PORTD Outport D
 //PIND  Inport D
+//23533
 void setup() {
   pinMode(PORTB, INPUT);
   PORTD = B00000011;
