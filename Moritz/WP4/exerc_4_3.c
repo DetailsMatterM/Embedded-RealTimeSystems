@@ -39,25 +39,6 @@ unsigned char random_inport() {
 	return (inport);
 }
 
-void printport(int portvalue) {
-	int binchar[8], rest, j, i = 0;
-	rest = portvalue;
-	while (rest != 0) {
-		binchar[i++] = rest % 2;
-		rest = rest / 2;
-	}
-	// Fill to 8 bits
-	while (i < 8) {
-		binchar[i++] = 0;
-	}
-	// Print bits and at the end corresponding decimal value
-	for (j = i - 1; j > -1; j--) {
-		printf("  %d", binchar[j]);
-	}
-	printf(" --------Porten value = %d  \n", portvalue);
-	return;
-}
-
 unsigned char toHex(unsigned char port) {
 	switch (port) {
 	case 0:

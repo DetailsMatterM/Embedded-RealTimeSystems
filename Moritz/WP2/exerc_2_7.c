@@ -82,7 +82,6 @@ int controlDigit(const char *persnr) {
 }
 
 int convert(char *person, int in, int span) {
-    int result = 0;
     char raw [span];
     int counter = 0;
     while(counter < in) {
@@ -93,6 +92,7 @@ int convert(char *person, int in, int span) {
         raw[i] = *person;
         person++;
     }
+    int result = 0;
     sscanf(raw, "%d", &result);
     return result;
 }

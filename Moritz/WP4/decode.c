@@ -5,7 +5,7 @@ int getnum(char c);
 
 int main (int argc, char *argv[]) {
     if (argc != 2) {
-        printf("Type : exerc_4_1.exe engine_on parameter, gear_pos parameter, key_pos parameter, brake 2 parameter and brake1 parameter\n");
+        printf("Type : decode.exe HexadecimalValueOfChoice");
     } else {
         int left = getnum(argv[1][0]);
         int right = getnum(argv[1][1]);
