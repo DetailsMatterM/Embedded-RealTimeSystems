@@ -1,12 +1,5 @@
 #include <avr/io.h>
 #include <util/delay.h>
-/* --- Macros preedefind for the compiler
-DDRB  Data direction register B
-PORTB Outport 
-BPINB  Inport 
-BDDRD  Data direction register D
-PORTD Outport D
-PIND  Inport D*/
 
 byte a = B01110000;
 byte b = B10110000;
@@ -18,12 +11,17 @@ void setup() {
     DDRD = B00000000;
 }
 
+int last = -1;
 void loop() {
-    int number_pressed = getKeypadInput();
-    if (number_pressed >= 0) {
-        Serial.println(number_pressed, HEX);
+    delay(10);
+    int pressed = getKeypadInput();
+    if (pressed == last) {
+   	    return; 
+  	}
+    if (pressed >= 0) {
+        Serial.println(pressed, HEX);
     }
-    delay(500); // Wait for 500 millisecond(s)
+    last = pressed;
 }
 
 int checker(int number, int identifier) {
