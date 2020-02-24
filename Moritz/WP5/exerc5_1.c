@@ -11,11 +11,11 @@ void setup() {
   for (byte i = 0; i < rows; i++) {
     pinMode(Output[i], OUTPUT);
   }
-  attachInterrupt(digitalPinToInterrupt(2),press,FALLING);
+  attachInterrupt(digitalPinToInterrupt(2), press, FALLING);
 }
 
 volatile bool busy = false;
-void press(){
+void press() {
   if (!busy) {
     // Mark as busy (debounce) to prevent this code from running more than once at the same time
     busy = true;
