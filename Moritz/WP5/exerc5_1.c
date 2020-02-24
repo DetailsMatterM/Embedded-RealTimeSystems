@@ -5,18 +5,8 @@ const byte Input[columns] = {7, 6, 5, 4};
 bool pressed = false;
 byte pressedKey;
 
-void getKeypadInput() {
-    static bool no_button_pressed = 0;
-    for (byte c = 0; c < columns; c++) {
-        if (digitalRead(Input[c]) == LOW) {
-            break;
-        }
-        if (c == (columns - 1)) {
-            no_button_pressed = 1;
-        }
-    }
-    if (no_button_pressed == 1) {
-        for (byte i = 0; i < rows; i++) {
+void getKeypadInput() { 
+  for (byte i = 0; i < rows; i++) {
             digitalWrite(Output[i], LOW);
         } 
         for (byte c = 0; c < columns; c++) {
@@ -32,7 +22,6 @@ void getKeypadInput() {
                 }
             }
         }
-    }
 }
 
 void setup() {
