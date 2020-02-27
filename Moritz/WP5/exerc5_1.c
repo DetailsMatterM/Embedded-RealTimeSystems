@@ -1,8 +1,17 @@
+/* ====================================
+File name: exerc_5_1.c 
+Date: 2019-02-27
+Group Number:07
+Members that contributed:
+Fredrik Ullman
+Mikael Köse Jansson
+Moritz Denke
+Demonstration code: [24288] Important !
+====================================== */
 const byte rows = 4;
 const byte columns = 4;
 const byte Output[rows] = {11, 10, 9, 8}; 
 const byte Input[columns] = {7, 6, 5, 4};
-
 volatile bool pressed = false;
 volatile byte pressedKey;
 

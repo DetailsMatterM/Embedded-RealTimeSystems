@@ -1,3 +1,13 @@
+/* ====================================
+File name: exerc_5_2.c 
+Date: 2019-02-27
+Group Number:07
+Members that contributed:
+Fredrik Ullman
+Mikael Köse Jansson
+Moritz Denke
+Demonstration code: [22589] Important !
+====================================== */
 const byte rows = 4;
 const byte columns = 4;
 const byte Output[rows] = {11, 10, 9, 8}; 
@@ -7,7 +17,6 @@ volatile bool pressed = false;
 volatile byte pressedKey;
 unsigned long time;
 double temperature;
-
 void setup() {
   Serial.begin(9600);
   for (byte i = 0; i < rows; i++) {
@@ -54,9 +63,9 @@ void press(){
 void checkTemp() {
   int valRaw = analogRead(analogPin);
   temperature = (double)valRaw / 1024;  
-  temperature = temperature * 5;                     
-  temperature = temperature - 0.5;                   
-  temperature = temperature * 100;  
+  temperature = temperature * 5;  //gets the voltage                   
+  temperature = temperature - 0.5;   //remove the offset                
+  temperature = temperature * 100;  //calculate degree
   Serial.println(temperature);
 }
 
