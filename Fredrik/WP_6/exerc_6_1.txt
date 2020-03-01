@@ -10,8 +10,13 @@ To create multiple threads, we could put the pthread_create() in a for loop for 
 be executed in order for the thread to be created, 4th passes arguments to the function in our 3rd argument. 
 
 3.How many parameters are passed to function runner?
+the fourth argument in pthread_create defines how many argument that shall
+ be passed through the function for argument 3. In our case it is "NULL", so NULL arguments are passed through runner().
 
+4.How can function runner know the values for parameters that, such as max value, not are passed to it?
+max_value is a global variable and will therefore be usable within the functions in this class. 
 
-4.How can function runner know the values for parameters that, such as max value, not arepassed to it?
-5.Test how the behavior of the program changesif line 26is omitted. Explain why.
-
+5.Test how the behavior of the program changes if line 26 is omitted. Explain why.
+ the pthread_join() method blocks threads , its "used to wait for the termination of a thread " (https://www.geeksforgeeks.org/thread-functions-in-c-c/). 
+when we comment out pthread_join() the numbers that are generated wont be sorted. it also doesnt find any value requested. 
+When we remove the function we dont wait for the thread to terminate and immediately starts processing the main thread (hey- what is the main thread ? )
