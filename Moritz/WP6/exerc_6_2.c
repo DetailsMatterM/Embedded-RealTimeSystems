@@ -9,6 +9,7 @@
 int array[200];
 int max_value;
 
+
 void *runner(void *param);
 void *runner2(void *param);
 void *runner3(void *param);
@@ -30,12 +31,17 @@ int main() {
 	pthread_join(tid, NULL);
 	pthread_create(&tid2, &attr, runner2, NULL);
 	pthread_join(tid2, NULL);
-	pthread_create(&tid3, &attr, runner3, NULL);
+
+	printf("Enter value to find\n");
+	int search;
+	scanf("%d", &search);
+	pthread_create(&tid3, &attr, runner3, &search);
 	pthread_join(tid3, NULL);
 	return 0;
 }
 
 void *runner(void *param) {
+	printf("Runner1 is running\n");
 	int c = 0, n=0;
 
 	for (c = 0; c < num_elems; c++) {
@@ -47,7 +53,8 @@ void *runner(void *param) {
 }
 
 void *runner2(void *param) {
-int c, d, swap;
+	printf("Runner2 is running\n");
+	int c, d, swap;
 
 	for (c = 0; c < num_elems; c++) {
 		for (d = 0; d < num_elems - c - 1; d++) {
@@ -62,9 +69,8 @@ int c, d, swap;
 }
 
 void *runner3(void *param) {
-	int search;
-	printf("Enter value to find\n");
-	scanf("%d", &search);
+	printf("Runner3 is running\n");
+	
 	int first = 0;
 	int last = num_elems - 1;
 	int middle = (first + last) / 2;
@@ -74,10 +80,10 @@ void *runner3(void *param) {
 	}
 
 	while (first <= last) {
-		if (array[middle] < search)
+		if (array[middle] < *((int *) param))
 			first = middle + 1;
-		else if (array[middle] == search) {
-			printf("\n %d found at location %d.\n", search, middle + 1);
+		else if (array[middle] == *((int *) param)) {
+			printf("\n %d found at location %d.\n", *((int *) param), middle + 1);
 			break;
 		} else
 			last = middle - 1;
@@ -85,6 +91,6 @@ void *runner3(void *param) {
 		middle = (first + last) / 2;
 	}
 	if (first > last)
-		printf("\n Not found! %d is not present in the list.\n", search);
+		printf("\n Not found! %d is not present in the list.\n", *((int *) param));
 
 }
