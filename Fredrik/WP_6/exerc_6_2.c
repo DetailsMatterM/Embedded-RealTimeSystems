@@ -49,22 +49,23 @@ int main()
         3. name of function to be executed for the thread to be created
         4. used to pass arguments to the function, in our case "runner" function.
         */
-    pthread_create(&tid, &attr, runner, NULL);
-    pthread_create(&find, &attr, finding, NULL);
-    pthread_create(&sort, &attr, sorting, NULL);
-    //blocks threads, its equivalent to "wait()" for processes.
-    pthread_join(tid, NULL);
-    pthread_join(find, NULL);
-    pthread_join(sort, NULL);
 
+    pthread_create(&tid, &attr, runner, NULL);
+    pthread_join(tid, NULL);
+    pthread_create(&sort, &attr, sorting, NULL);
+    pthread_join(sort, NULL);
     printf("Enter value to find\n");
     scanf("%d", &search);
+    pthread_create(&find, &attr, finding, search);
+    pthread_join(find, NULL);
 
     return 0;
 }
 
 void *runner(void *param)
 {
+    printf("Executing runner thread\n");
+
     int c = 0, n = 0;
 
     for (c = 0; c < num_elems; c++)
@@ -79,7 +80,7 @@ void *runner(void *param)
 
 void *finding(void *param)
 {
-
+    printf("Executing finding thread\n");
     int first = 0;
     int last = num_elems - 1;
     int middle = (first + last) / 2;
@@ -111,6 +112,8 @@ void *finding(void *param)
 
 void *sorting(void *param)
 {
+    printf("Executing sorting thread\n");
+
     int c, d, swap;
 
     for (c = 0; c < num_elems; c++)
