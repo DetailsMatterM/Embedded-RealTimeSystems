@@ -10,10 +10,14 @@ int array[200];
 int max_value;
 
 void *runner(void *param);
+void *runner2(void *param);
+void *runner3(void *param);
 
 int main() {
 	time_t t;
 	pthread_t tid;
+	pthread_t tid2;
+	pthread_t tid3;
 	pthread_attr_t attr;
 	
 	srand((unsigned) time(&t));
@@ -24,8 +28,26 @@ int main() {
 
 	pthread_create(&tid, &attr, runner, NULL);
 	pthread_join(tid, NULL);
+	pthread_create(&tid2, &attr, runner2, NULL);
+	pthread_join(tid2, NULL);
+	pthread_create(&tid3, &attr, runner3, NULL);
+	pthread_join(tid3, NULL);
+	return 0;
+}
 
-	int c, d, swap;
+void *runner(void *param) {
+	int c = 0, n=0;
+
+	for (c = 0; c < num_elems; c++) {
+		for(n=0; n<1000; n++); // To delay a bit 
+		array[c] = rand() % max_value;
+	}
+
+	pthread_exit(0);
+}
+
+void *runner2(void *param) {
+int c, d, swap;
 
 	for (c = 0; c < num_elems; c++) {
 		for (d = 0; d < num_elems - c - 1; d++) {
@@ -37,10 +59,12 @@ int main() {
 		}
 	}
 
+}
+
+void *runner3(void *param) {
 	int search;
 	printf("Enter value to find\n");
 	scanf("%d", &search);
-
 	int first = 0;
 	int last = num_elems - 1;
 	int middle = (first + last) / 2;
@@ -63,16 +87,4 @@ int main() {
 	if (first > last)
 		printf("\n Not found! %d is not present in the list.\n", search);
 
-	return 0;
-}
-
-void *runner(void *param) {
-	int c = 0, n=0;
-
-	for (c = 0; c < num_elems; c++) {
-		for(n=0; n<1000; n++); // To delay a bit 
-		array[c] = rand() % max_value;
-	}
-
-	pthread_exit(0);
 }
