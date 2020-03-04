@@ -29,13 +29,10 @@ void setup() {
 volatile bool busy = false;
 void press(){
   if (!busy) {
-    // Mark as busy (debounce) to prevent this code from running more than once at the same time
     busy = true;
-    // Reset all the voltages
     for (byte i = 0; i < rows; i++) {
       digitalWrite(Output[i], LOW);
     }
-    // Check for any key press and break if a key was pressed
     for (byte c = 0; c < columns; c++) {
       if (pressed) {
         break;
@@ -51,11 +48,9 @@ void press(){
         }
       }
     }
-    // Reset all the voltages again
     for (byte i = 0; i < rows; i++) {
       digitalWrite(Output[i], LOW);
     }
-    // Mark as not busy so we can check voltages again
     busy = false;
   }
 }
@@ -67,12 +62,9 @@ void checkTemp() {
 }
 
 void loop() {
-   // Wait for any interrupt to finish processing
   if (!busy) {
-    // Check if we pressed anything
     if (pressed) {
       Serial.println(pressedKey, HEX);
-      // Reset back to defaults
       pressedKey = 0;
       pressed = false;
     }
