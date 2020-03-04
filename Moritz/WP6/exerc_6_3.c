@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #define ML13_Status 0x0B10
-//00010000 or 
+//00010000 or
 #define ML13_Control 0x0B00
 
 void delay();
@@ -22,18 +22,23 @@ void main()
 
     //this checks if someone is approaching the sensor. if so, it changes status to
     // "Door is wide open".
-    int proximity = 0;
+
     char shiftInOne = 1;
     char shiftInZero = 0;
+    //while loop runs continously keepig check on the door, we start with closed door
     while (1)
     {
+        //if button for control is pressed or person approaches door
         if (((control & 0x01) == 1) || ((status >> 3) & 0x01) == 0x0B01)
         {
+            //shift to opening slowly
             status = shiftInOne << 6;
-            delay(5000);
+            delay(5000); // time it takes to open door
+            //shift to wide open
             status = shiftInOne << 4;
-            delay(10000);
+            delay(10000); // time door stays open
         }
+        //if button for closing is pressed or door is wide open
         if (((control >> 1 & 0x01) == 1) || ((status >> 4) & 0x01) == 0x0B01)
         {
             status = shiftInZero << 6;
@@ -60,17 +65,18 @@ void delay(int length)
 {
     for (int i = 0; i < length * 100; i++)
     {
-        if (((status >> 2) & 0x01) == 0x0B01)
+        //i fsomeone approaches the door
+        if (((status >> 3) & 0x01) == 0x0B01)
         {
             break;
         }
-
-        if (((control >> 1) & 0x01) == 0b00000010)
+        //if close button is pressed
+        if (((control >> 1) & 0x01) == 0b00000001)
         {
             break;
         }
-
-        if (((control >> 1) & 0x00) == 0b00000001)
+        //if open button is pressed
+        if ((control & 0x01) == 0b00000001)
         {
             break;
         }
