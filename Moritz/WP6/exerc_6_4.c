@@ -1,13 +1,15 @@
-#include <sys/time.h>
+#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
 #include <stdio.h>
 #include <pthread.h>
-
+#include <sys/time.h>
 
 int programTime = 0;
 
 double getTimeS();
 void *runner(void *param);
 void *readInport(void *param);
+int printCheck = 0;
+int printCheckRead = 0;
 
 int main() {
     pthread_t time;
@@ -18,11 +20,13 @@ int main() {
     pthread_create(&time, &attr, runner, NULL);
     pthread_create(&readOutput, &attr, readInport, NULL); 
 
-   double startTime = programTime;
+    double startTime = programTime;
+  
     while (programTime < 50) {
-        if (programTime == startTime + 1) {
+        if (printCheck == 0 && programTime == startTime + 5) {
             startTime = programTime;
-            printf("Time");
+            printf("Time %d\n", programTime);
+            printCheck = 1;
         }
     }
     return 0;
@@ -42,16 +46,18 @@ void *runner(void *param) {
         if (compTime == startTime + 1) {
             programTime++;
             startTime = compTime;
+            printCheck = 0;
+            printCheckRead = 0;
         }
     }
     pthread_exit(0);
 }
 
 void *readInport(void *param) {
-    double startTime = programTime;
     while (programTime < 50) {
-        if (programTime % 5 == 0) {
-            printf("Reading Inport now");
+        if (programTime > 0 && printCheckRead == 0 && programTime % 5 == 0) {
+            printf("Reading Inport now\n");
+            printCheckRead = 1;
         }
     }
     pthread_exit(0);
