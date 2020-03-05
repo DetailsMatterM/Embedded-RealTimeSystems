@@ -13,7 +13,7 @@ int main() {
 
     pthread_attr_init(&attr);
     pthread_create(&time, &attr, runner, NULL);
-    pthread_create(&readOutput, &attr, )
+    pthread_create(&readOutput, &attr, );
     for (int i = 0; i < 300; i++) {
         double time = getTimeS();
         printf("_______________________\n");
@@ -23,7 +23,7 @@ int main() {
 
 }
 
-double getTimeS(){
+double getTimeS() {
 struct timeval t;
 gettimeofday(&t, NULL);
 
@@ -31,7 +31,11 @@ return t.tv_sec;
 }
 
 void *runner(void *param) {
+    double startTime = getTimeS();
     while (program_time < 50) {
-
+        double compTime = getTimeS();
+        if (compTime == startTime + 1) {
+            program_time++;
+        }
     }
 }
