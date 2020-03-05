@@ -27,7 +27,6 @@ int main() {
             startTime = programTime;
             printf("Time %d\n", programTime);
             printCheck = 1;
-            printCheckRead = 0;
         }
     }
     return 0;
@@ -44,7 +43,7 @@ void *runner(void *param) {
     double startTime = getTimeS();
     while (programTime < 50) {
         double compTime = getTimeS();
-        if (compTime == startTime + 1) {
+        if (compTime >= startTime + 1) {
             programTime++;
             startTime = compTime;
         }
@@ -54,9 +53,8 @@ void *runner(void *param) {
 
 void *readInport(void *param) {
     while (programTime < 50) {
-        if (programTime > 0 && printCheckRead == 0 && programTime % 5 == 0) {
+        if (programTime > 0 && printCheck == 1 && programTime % 5 == 0) {
             printf("Reading Inport now\n");
-            printCheckRead = 1;
             printCheck = 0;
         }
     }

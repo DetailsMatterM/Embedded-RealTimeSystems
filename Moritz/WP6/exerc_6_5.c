@@ -8,7 +8,7 @@ pthread_mutex_t count_mutex = PTHREAD_MUTEX_INITIALIZER;
 pthread_cond_t not_empty = PTHREAD_COND_INITIALIZER;
 pthread_cond_t not_full = PTHREAD_COND_INITIALIZER;
 pthread_mutex_t mutex = PTHREAD_MUTEX_INITIALIZER;
-pthread_condattr_t cattr;
+
 // Global buffer and corresponding counters.
 char letter = 'a'; //the starting letter
 #define MAX 10     //buffer size
@@ -34,7 +34,8 @@ int main() {
   //int i;
 
   while (1) {
-    printf("main is executing");
+    //printf("main is executing");
+    
   }
 }
 
@@ -43,17 +44,33 @@ void *put() {
   while (1) {
     int mute;
     if ((mute = pthread_mutex_lock(&mutex)) == 0) {
-      signal = pthread_cond_wait(&not_empty, &cattr);
-      printf("Buffer store %c", letter);
+      pthread_cond_signal(&not_empty);
       buffer[inpos] = letter;
+      printf("%c", letter);
       letter++;
-      
+      if (letter > 'z') {
+        letter = 'a';
+      }
+      if(inpos == MAX - 1) {
+        inpos = 0;
+      } else {
+        inpos++;
+      }
+      count++;
+      pthread_mutex_unlock(&mutex);
     }
   }
 }
 
-// void *fetch() {
-//   while (1) {
-//     ........
-//   }
-// }
+void *fetch() {
+  while (1) {
+      if (outpos < inpos) {
+        if(outpos == MAX - 1) {
+          outpos = 0;
+        } else {
+          outpos++;
+        }
+        count--;
+      }
+  }
+}
