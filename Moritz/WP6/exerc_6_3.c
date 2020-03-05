@@ -3,9 +3,10 @@
 #define ML13_Status 0x0B10
 //00010000 or
 #define ML13_Control 0x0B00
+//these might be just the address we sent the instructions to
 
-void delay();
-char control = ML13_Control;
+int delay();
+char control = ML13_Control; //that should just be a char value we can save stuff in
 char status = ML13_Status;
 void main()
 {
@@ -29,23 +30,27 @@ void main()
     while (1)
     {
         //if button for control is pressed or person approaches door
-        if (((control & 0x01) == 1) || ((status >> 3) & 0x01) == 0x0B01)
+        if (((control & 0x01) == 1) || ((status >> 3) & 0x01) == 1)
         {
             //shift to opening slowly
             status = shiftInOne << 6;
-            delay(5000); // time it takes to open door
-            //shift to wide open
-            status = shiftInOne << 4;
-            delay(10000); // time door stays open
+            if (delay(5000) == 1) {
+                //shift to wide open
+                // time door stays open
+                status = shiftInOne << 4;
+                status = shiftInZero << 6;
+                delay(10000); 
+            } // time it takes to open door
+            
         }
         //if button for closing is pressed or door is wide open
-        if (((control >> 1 & 0x01) == 1) || ((status >> 4) & 0x01) == 0x0B01)
+        if (((control >> 1 & 0x01) == 1) || ((status >> 4) & 0x01) == 1)
         {
-            status = shiftInZero << 6;
             status = shiftInZero << 4;
             status = shiftInOne << 7;
-            delay(5000);
-            status = shiftInOne << 5;
+            if (delay(5000) == 1) {
+                status = shiftInOne << 5;
+            }
         }
     }
 
@@ -61,24 +66,28 @@ void main()
     // }
 }
 
-void delay(int length)
+//rename the function to make sure that it is clear
+//that it does more than just waiting
+int delay(int length)
 {
+    //use the gettimeofday and stire start time and when time has passed break
     for (int i = 0; i < length * 100; i++)
     {
-        //i fsomeone approaches the door
-        if (((status >> 3) & 0x01) == 0x0B01)
+        //if someone approaches the door
+        if (((status >> 3) & 0x01) == 1)
         {
-            break;
+            return 0; //means it was broken
         }
         //if close button is pressed
-        if (((control >> 1) & 0x01) == 0b00000001)
+        if (((control >> 1) & 0x01) == 1)
         {
-            break;
+            return 0; 
         }
         //if open button is pressed
-        if ((control & 0x01) == 0b00000001)
+        if ((control & 0x01) == 1)
         {
-            break;
+            return 0; 
         }
     }
+    return 1; //means we waited successfully
 }
