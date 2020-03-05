@@ -1,11 +1,21 @@
 #include <sys/time.h>
 #include <stdio.h>
+#include <pthread.h>
 
-double getTimeMs();
+int program_time;
+
+double getTimeS();
 
 int main() {
-    for(int i = 0; i < 300; i++) {
-        double time = getTimeMs();
+    pthread_t time;
+    pthread_t readOutput;
+    pthread_attr_t attr;
+
+    pthread_attr_init(&attr);
+    pthread_create(&time, &attr, runner, NULL);
+    pthread_create(&readOutput, &attr, )
+    for (int i = 0; i < 300; i++) {
+        double time = getTimeS();
         printf("_______________________\n");
         printf("%f\n", time);
     }
@@ -13,9 +23,15 @@ int main() {
 
 }
 
-double getTimeMs(){
+double getTimeS(){
 struct timeval t;
 gettimeofday(&t, NULL);
 
-return (t.tv_sec + (t.tv_usec / 1000000.0)) * 1000.0;
+return t.tv_sec;
+}
+
+void *runner(void *param) {
+    while (program_time < 50) {
+
+    }
 }
