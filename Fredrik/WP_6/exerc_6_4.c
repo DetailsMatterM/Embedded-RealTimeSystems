@@ -7,6 +7,7 @@ int program_time = 0; // The global time, start value 0
 void *time_count(void *param);
 void *read_inport(void *param);
 double get_time_ms();
+int get_time_s();
 
 int main()
 {
@@ -33,18 +34,19 @@ int main()
 
 void *time_count(void *param)
 {
-    double originTime = get_time_ms();
-
-    while (program_time < 50)
+    double originTime = get_time_s();
+    printf(" origin time before loop: %f \n", originTime);
+    while (program_time < 100)
     {
-
-        printf(" origin time : %f time is : %f and program counter is at %d\n", originTime, get_time_ms(), program_time);
-
-        program_time += 1;
-        // Check system-time ( get_time_ms())
-        // Increase program_time by one every second.
+        if (originTime < (get_time_s() + 1))
+        {
+            printf("origin time : %f time in ms : %d \n", originTime, get_time_s());
+            originTime += 1;
+            program_time += 1;
+            // Check system-time ( get_time_ms())
+            // Increase program_time by one every second.
+        }
     }
-    //  printf("%f time count \n", get_time_ms());
 
     pthread_exit(0);
 }
@@ -67,5 +69,12 @@ double get_time_ms()
     struct timeval t;
     gettimeofday(&t, NULL);
     double result = (t.tv_sec + (t.tv_usec / 1000000.0)) * 1000.0;
+    return result;
+}
+int get_time_s()
+{
+    struct timeval t;
+    gettimeofday(&t, NULL);
+    int result = t.tv_sec;
     return result;
 }
