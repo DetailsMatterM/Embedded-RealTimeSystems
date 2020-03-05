@@ -1,0 +1,29 @@
+MODULE main 
+
+VAR 
+
+    location: {l1,l2};
+
+ASSIGN 
+
+    init(location) := l1;
+
+    next(location) := case
+
+                (location = l1) : l2;
+                (location = l2) : l1;
+
+                    esac;
+
+/-- 
+1. to start NuSMV, in the bin folder run ./NuSMV -int. your terminal should show "NuSMV >"
+2. I wrote some code in vsCode and moved that file into the bin folder . dont know if its correct
+3. Run read_model -i test.smv
+4.  type flatten_hierarchy
+5. type encode_variables 
+6. type build_model
+7. type pick_state -i 
+alternatively to step 7, do 8 .
+8. simulate -i -k 10 (10 iterations until program exits)
+9. type print_reachable_states -v to see all your states. 
+ --/
