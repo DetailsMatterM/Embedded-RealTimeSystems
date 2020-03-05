@@ -2,9 +2,10 @@
 #include <stdio.h>
 #include <pthread.h>
 
-int program_time;
+int programTime;
 
 double getTimeS();
+void *runner(void *param);
 
 int main() {
     pthread_t time;
@@ -13,13 +14,7 @@ int main() {
 
     pthread_attr_init(&attr);
     pthread_create(&time, &attr, runner, NULL);
-    pthread_create(&readOutput, &attr, );
-    for (int i = 0; i < 300; i++) {
-        double time = getTimeS();
-        printf("_______________________\n");
-        printf("%f\n", time);
-    }
-    
+    pthread_create(&readOutput, &attr, readInport, NULL); 
 
 }
 
@@ -32,10 +27,22 @@ return t.tv_sec;
 
 void *runner(void *param) {
     double startTime = getTimeS();
-    while (program_time < 50) {
+    while (programTime < 50) {
         double compTime = getTimeS();
         if (compTime == startTime + 1) {
-            program_time++;
+            programTime++;
+            startTime = compTime;
         }
     }
+    pthread_exit(0);
+}
+
+void *readInport(void *param) {
+    double starTime = programTime;
+    while (programTime < 50) {
+        if (programTime == starTime + 5) {
+            printf("Reading Inport now");
+        }
+    }
+    pthread_exit(0);
 }
