@@ -27,6 +27,7 @@ int main() {
             startTime = programTime;
             printf("Time %d\n", programTime);
             printCheck = 1;
+            printCheckRead = 0;
         }
     }
     return 0;
@@ -46,8 +47,6 @@ void *runner(void *param) {
         if (compTime == startTime + 1) {
             programTime++;
             startTime = compTime;
-            printCheck = 0;
-            printCheckRead = 0;
         }
     }
     pthread_exit(0);
@@ -58,6 +57,7 @@ void *readInport(void *param) {
         if (programTime > 0 && printCheckRead == 0 && programTime % 5 == 0) {
             printf("Reading Inport now\n");
             printCheckRead = 1;
+            printCheck = 0;
         }
     }
     pthread_exit(0);
