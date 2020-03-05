@@ -4,8 +4,12 @@
 double getTimeMs();
 
 int main() {
-    double time = getTimeMs();
-    printf("%f", time);
+    for(int i = 0; i < 300; i++) {
+        double time = getTimeMs();
+        printf("_______________________\n");
+        printf("%f\n", time);
+    }
+    
 
 }
 
