@@ -17,24 +17,22 @@ void main()
         //if button for control is pressed or person approaches door
         if (((control & 0x01) == 1) || ((status >> 3) & 0x01) == 1)
         {
-            //shift to opening slowly
-            status = shiftInOne << 6;
-            if (delayAndCheck(5000) == 1) {
-                //shift to wide open
-                // time door stays open
-                status = shiftInOne << 4;
-                status = shiftInZero << 6;
-                delayAndCheck(10000); 
-            } // time it takes to open door
+            
+            status = shiftInOne << 6; //shift to opening slowly
+            if (delayAndCheck(5000) == 1) { // time it takes to open door
+                status = shiftInOne << 4; //shift to wide open
+                status = shiftInZero << 6; // door is no longer in opening process
+                delayAndCheck(10000); // time door stays open
+            } 
             
         }
         //if button for closing is pressed or door is wide open
-        if (((control >> 1 & 0x01) == 1) || ((status >> 4) & 0x01) == 1)
-        {
-            status = shiftInZero << 4;
-            status = shiftInOne << 7;
-            if (delayAndCheck(5000) == 1) {
-                status = shiftInOne << 5;
+        if (((control >> 1 & 0x01) == 1) || ((status >> 4) & 0x01) == 1) {
+            status = shiftInZero << 4; //door is no longer wide open
+            status = shiftInOne << 7; // door is closing slowly
+            if (delayAndCheck(5000) == 1) { 
+                status = shiftInOne << 5; //door is closed
+                status = shiftInZero << 7; //door is no longer in closing process
             }
         }
     }
@@ -42,7 +40,8 @@ void main()
 
 int delayAndCheck(int length)
 {
-    //use the gettimeofday and stire start time and when time has passed break
+    //other way to solve this would be to 
+    //use the gettimeofday and start time and when time has passed break
     for (int i = 0; i < length * 100; i++)
     {
         //if someone approaches the door
@@ -61,5 +60,5 @@ int delayAndCheck(int length)
             return 0; 
         }
     }
-    return 1; //means we waited successfully
+    return 1; //if we waited successfully
 }
