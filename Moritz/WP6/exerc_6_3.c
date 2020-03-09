@@ -7,7 +7,7 @@
 char shiftInOne = 1;
 char shiftInZero = 0;
 int delayAndCheck(int length);
-unsigned char control; //that should just be a char value we can save stuff in
+unsigned char control; 
 unsigned char status;
 void main()
 {
