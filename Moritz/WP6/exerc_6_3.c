@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
-#define ML13_Status 0x0B10
-#define ML13_Control 0x0B00
+//#define ML13_Status 0x0B10
+//#define ML13_Control 0x0B00
 //these might be just the address we sent the instructions to
 
 char shiftInOne = 1;
