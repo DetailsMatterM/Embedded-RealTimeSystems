@@ -4,13 +4,14 @@
 #define ML13_Control 0x0B00
 //these might be just the address we sent the instructions to
 
-int delay();
+char shiftInOne = 1;
+char shiftInZero = 0;
+int delayAndCheck(int length);
 unsigned char control; //that should just be a char value we can save stuff in
 unsigned char status;
 void main()
 {
-    char shiftInOne = 1;
-    char shiftInZero = 0;
+    status = shiftInOne << 5;
     //while loop runs continously keepig check on the door, we start with closed door
     while (1)
     {
