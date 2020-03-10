@@ -83,7 +83,6 @@ void *put() {
       exit(1);
     }
 
-    // Do shitty random wait that we don't know why it's needed
     for (int i = 0; i < 100000; i++);
   }
 }
@@ -127,7 +126,6 @@ void *fetch() {
       exit(1);
     }
 
-    // Do shitty random wait that we don't know why it's needed
     for (int i = 0; i < 100000; i++);
   }
 }
