@@ -1,0 +1,31 @@
+MODULE main 
+VAR 
+    Door: {Open, Closed}; 
+    Button: {None, Start, Stop};
+    Timer: 0..999;
+    Cooking: boolean; 
+ASSIGN 
+    init(Door) := Closed; 
+    init(Button) := None;
+    init(Timer) := 0;
+    next(Timer) := --start of the case
+    case
+        Timer > 0 & Cooking=TRUE : Timer - 1;
+        Timer > 0 & Cooking=FALSE & Button!=Stop : Timer;
+        Button=Stop : 0;
+        Timer=0 : 0..999;
+        TRUE: Timer;
+    esac; 
+    init(Cooking) := FALSE;
+    next(Cooking) := 
+    case
+        Door = Closed & Timer > 0 : Cooking : TRUE;
+        
+        
+        -- Suggestion: Start by defining the conditions that would cause 
+        -- cooking to start. Then add conditions that would make it stop.
+        -- Finally, ensure it will continue running if it is supposed to.
+        
+        TRUE: FALSE; 
+    esac; 
+

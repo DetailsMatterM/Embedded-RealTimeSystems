@@ -1,22 +1,21 @@
-1.How many threads (in total) are created during the execution of the program?
-We are creating one thread, "tid" during execution of the program, because on line 25 we call pthread_create() and pass the thread as argument. (the name of the thread is specified in pthread_create:  https://www.geeksforgeeks.org/multithreading-c-2/)
-To create multiple threads, we could put the pthread_create() in a for loop for n amount of iterations. 
 
-2.What are lines 16, 17, 20, 25and 26intended for?
-16 : declares a variable "tid" of type pthread_t
-17: declares a variable "attr" of type pthread_attr_t. used to change behavior in thread
-20: This function initializes the thread attribute (https://users.cs.cf.ac.uk/Dave.Marshall/C/node30.html)
-25: creates a thread called "tid".The function takes 4 arguments, where the first is a pointer to the thread id "tid", 2nd is specifying attribtues, 3rd is the name of function to 
+1. If the main thread is counted, there will be 2 threads created during the execution of the program.
+
+2. Lines:
+
+a. 16: declaration of a variable of type pthread_t tid. This data type allows to uniquely identify a thread. 
+
+b. 17: declaration of pointer to a thread attributes struct that is used to define thread attributes and to influence the behaviour of a thread
+
+c. 20: initialization of the thread attributes object attr with default attribute values. This allows to set the values of these attributes later and the use of the object in pthread_create calls
+
+d. 25: creates a thread called "tid".The function takes 4 arguments, where the first is a pointer to the thread id "tid", 2nd is specifying attributes, 3rd is the name of function to 
 be executed in order for the thread to be created, 4th passes arguments to the function in our 3rd argument. 
 
-3.How many parameters are passed to function runner?
-the fourth argument in pthread_create defines how many argument that shall
- be passed through the function for argument 3. In our case it is "NULL", so NULL arguments are passed through runner().
+e. 26: pthread_join is used to wait for the termination of a thread, when pthread_join has been called successfully, the caller is guaranteed that the thread has been terminated
 
-4.How can function runner know the values for parameters that, such as max value, not are passed to it?
-max_value is a global variable and will therefore be usable within the functions in this class. 
+3. Since the last parameter of pthread_create is set to NULL, runner takes technically a parameter, but it is NULL, so it has no value.
 
-5.Test how the behavior of the program changes if line 26 is omitted. Explain why.
- the pthread_join() method blocks threads , its "used to wait for the termination of a thread " (https://www.geeksforgeeks.org/thread-functions-in-c-c/). 
-when we comment out pthread_join() the numbers that are generated wont be sorted. it also doesnt find any value requested. 
-When we remove the function we dont wait for the thread to terminate and immediately starts processing the main thread (hey- what is the main thread ? )
+4. Even if you spin up another thread, it will use the same code base. Since max_value is a global variable, it is accessible
+
+5.When line 26 is omitted, the program will not wait for the thread to fill the array with values when it starts sorting it. Therefore the array won’t be sorted, since it is completely filled after the program has passed the sorting function. Since the search mechanism is only working if the array is sorted, it won’t be able to find the requested number. pthread_join is responsible for waiting for the termination of a thread, which is crucial in this use case.
