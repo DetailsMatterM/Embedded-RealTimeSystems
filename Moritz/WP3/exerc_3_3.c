@@ -11,10 +11,10 @@ DIT1165 Program file exerc_3_3.c **
 #define MAX 5
 
 // ##### Typedefs ####
-typedef struct q {
+typedef struct {
     int number;
-    struct q *next;
-    struct q *prev;
+    REGTYPE *next;
+    REGTYPE *prev;
 } REGTYPE;
 
 // ##### Funcion declarations #####
