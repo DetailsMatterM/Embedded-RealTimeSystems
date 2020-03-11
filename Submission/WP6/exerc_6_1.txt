@@ -1,0 +1,21 @@
+
+1. If the main thread is counted, there will be 2 threads created during the execution of the program.
+
+2. Lines:
+
+a. 16: declaration of a variable of type pthread_t tid. This data type allows to uniquely identify a thread. 
+
+b. 17: declaration of pointer to a thread attributes struct that is used to define thread attributes and to influence the behaviour of a thread
+
+c. 20: initialization of the thread attributes object attr with default attribute values. This allows to set the values of these attributes later and the use of the object in pthread_create calls
+
+d. 25: creates a thread called "tid".The function takes 4 arguments, where the first is a pointer to the thread id "tid", 2nd is specifying attributes, 3rd is the name of function to 
+be executed in order for the thread to be created, 4th passes arguments to the function in our 3rd argument. 
+
+e. 26: pthread_join is used to wait for the termination of a thread, when pthread_join has been called successfully, the caller is guaranteed that the thread has been terminated
+
+3. Since the last parameter of pthread_create is set to NULL, runner takes technically a parameter, but it is NULL, so it has no value.
+
+4. Even if you spin up another thread, it will use the same code base. Since max_value is a global variable, it is accessible
+
+5.When line 26 is omitted, the program will not wait for the thread to fill the array with values when it starts sorting it. Therefore the array won’t be sorted, since it is completely filled after the program has passed the sorting function. Since the search mechanism is only working if the array is sorted, it won’t be able to find the requested number. pthread_join is responsible for waiting for the termination of a thread, which is crucial in this use case.
