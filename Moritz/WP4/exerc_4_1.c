@@ -10,7 +10,6 @@ int main (int argc, char *argv[]) {
         char brake1 = atoi(argv[4]);
         char brake2 = atoi(argv[5]);
         unsigned char b = (engine_on << 7) ^ (gear_pos << 4) ^ (key_pos << 2) ^ (brake2 << 1) ^ brake1;
-        
         char output [8];
         int a = 0;
         for (int i = 7; 0 <= i; i--) {

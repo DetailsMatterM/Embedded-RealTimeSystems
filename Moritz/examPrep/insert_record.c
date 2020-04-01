@@ -22,5 +22,13 @@ int main(int argc, char *argv[]) {
 }
 
 int insert_record(REGTYPE *newrecord, REGTYPE *top) {
-
+    if(newrecord -> prev != NULL) {
+        newrecord -> prev = top;
+        newrecord -> next = top->next;
+        top->next -> prev = newrecord;
+        top->next = newrecord;
+        return 1;
+    }
+    return 0;
+    
 }
